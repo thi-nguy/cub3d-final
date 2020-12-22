@@ -21,10 +21,10 @@
 
 #define BUFFER_SIZE 10
 
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(char const *s, int start, int len);
+// char	*ft_strchr(const char *s, int c);
+// size_t	ft_strlen(const char *s);
+// char	*ft_strdup(const char *s1);
+// char	*ft_substr(char const *s, int start, int len);
 char	*ft_strcpy(char *dst, const char *src);
 char	*join_str(char *s1, char *s2);
 int		find_n(const char *str, int c);

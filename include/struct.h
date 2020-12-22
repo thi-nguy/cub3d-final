@@ -1,7 +1,6 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-
 typedef struct s_info
 {
 	// int window_w;
@@ -19,9 +18,11 @@ typedef struct s_info
 	// char	player_dir;
 	// int	player_x0;
 	// int player_y0;
+    t_list* head_llist;
     int screenshoot;
     int fd;
 } t_info;
+
 
 // typedef struct s_graphic 
 // {

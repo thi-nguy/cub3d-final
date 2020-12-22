@@ -12,13 +12,26 @@
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+// void	ft_lstiter(t_list *lst, void (*f)(void *))
+// {
+// 	if (!f)
+// 		return ;
+// 	while (lst)
+// 	{
+// 		(*f)(lst->content);
+// 		lst = lst->next;
+// 	}
+// }
+
+// Version using in cub3d
+void	ft_lstiter(t_list *lst, int (*f)(const char *, ...))
 {
 	if (!f)
 		return ;
 	while (lst)
 	{
 		(*f)(lst->content);
+		(*f)("\n");
 		lst = lst->next;
 	}
 }

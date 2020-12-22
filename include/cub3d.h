@@ -31,6 +31,8 @@
 
 void    check_argument(int ac, char** av, int* save);
 void    get_fd(char* arg, t_info* info);
+int     parse(t_info* info);
+int read_line_into_linked_list(t_list** head_llist, int fd);
 
 
 
