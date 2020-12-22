@@ -28,7 +28,7 @@ ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c\
 ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c\
 ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c\
-get_next_line.c get_next_line_utils.c
+get_next_line.c get_next_line_utils.c ft_strcmp.c
 
 # BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c

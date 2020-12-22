@@ -2,24 +2,26 @@
 #define STRUCT_H
 
 
-// typedef struct s_info
-// {
-// 	int window_w;
-// 	int window_h;
-// 	int num_rows;
-// 	int num_cols;
-// 	char **map;
-// 	char *north_texture;
-// 	char *south_texture;
-// 	char *west_texture;
-// 	char *east_texture;
-// 	char *sprite_texture;
-// 	int floor_color;
-// 	int ceiling_color;
-// 	char	player_dir;
-// 	int	player_x0;
-// 	int player_y0;
-// } t_info;
+typedef struct s_info
+{
+	// int window_w;
+	// int window_h;
+	// int num_rows;
+	// int num_cols;
+	// char **map;
+	// char *north_texture;
+	// char *south_texture;
+	// char *west_texture;
+	// char *east_texture;
+	// char *sprite_texture;
+	// int floor_color;
+	// int ceiling_color;
+	// char	player_dir;
+	// int	player_x0;
+	// int player_y0;
+    int screenshoot;
+    int fd;
+} t_info;
 
 // typedef struct s_graphic 
 // {

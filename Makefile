@@ -10,11 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-# MINILIBX = -L./minilibx-linux/ -lmlx -lmlx_Linux
-
 LIBFT = -L./libft/ -lft
 
-OTHER_LIB = -lXext -lX11 -lm -lbsd
+# MINILIBX = -L./minilibx-linux/ -lmlx -lmlx_Linux 		#put this on when we compile sur Linux
+# OTHER_LIB = -lXext -lX11 -lm -lbsd 					#put this on when we compile sur Linux
 
 FLAGS = -g -O3 -fsanitize=address -Wall -Wextra -Werror 
 # -framework OpenGL -framework AppKit
@@ -27,7 +26,9 @@ RM = rm -f
 NAME = cub3D
 
 SRC = 	./src/main.c\
-		./src/utils.c\
+		./src/check_argument.c\
+		./src/get_fd.c\
+		./src/parse.c\
 		
 
 OBJ = $(SRC:.c=.o)

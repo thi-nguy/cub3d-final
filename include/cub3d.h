@@ -20,14 +20,17 @@
 #include <fcntl.h>
 #include <math.h>
 
-// #include "../libft/libft.h"
+#include "../libft/libft.h"
+//----------- Open this on when compiling on Linux-----------
 // #include "../minilibx-linux/mlx.h"
 // #include "../minilibx-linux/mlx_int.h"
+//-----------------------------------------------------------
 
 #include "constant.h"
 #include "struct.h"
 
-void check_argument(int ac, char** av);
+void    check_argument(int ac, char** av, int* save);
+void    get_fd(char* arg, t_info* info);
 
 
 
