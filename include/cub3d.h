@@ -35,8 +35,12 @@ int     parse(t_info* info);
 int read_line_into_linked_list(t_list** head_llist, int fd);
 int   free_memory(t_info* info, int return_code);
 
-
-
+int parse_info(t_info* info);
+int parse_resolution(t_list** lst);
+t_list*  get_node(t_list** llist, char* item);
+t_list* ft_lstfind(t_list*lst, char* item, int f(const char *, char *));
+int lst_find_item(const char *content, char* x);
+void   free_array(char** array);
 
 
 #endif

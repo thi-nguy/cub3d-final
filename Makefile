@@ -17,6 +17,7 @@ LIBFT = -L./libft/ -lft
 
 FLAGS = -g -O3 -fsanitize=address -Wall -Wextra -Werror 
 # -framework OpenGL -framework AppKit
+# -fsanitize=address: dung de chi ra memory leak neu co
 
 
 CC = gcc -I./include/
@@ -29,6 +30,7 @@ SRC = 	./src/main.c\
 		./src/check_argument.c\
 		./src/get_fd.c\
 		./src/parse.c\
+		./src/parse_info.c\
 		
 
 OBJ = $(SRC:.c=.o)
