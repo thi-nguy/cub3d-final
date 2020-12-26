@@ -2,19 +2,8 @@
 
 int find_item(const char *content, char* x)
 {
-    char **new_array;
-
-    if (!(new_array = ft_split(content, ' ')))
-    {
-        free_array(new_array);
-        return(0);
-    }
-    if (ft_strcmp(new_array[0], x) == 1)
-    {
-        free_array(new_array);
+    if (ft_strncmp(content, x, ft_strlen(x)) == 0)
         return (1);
-    }
-    free_array(new_array);
     return (0);
 }
 
@@ -44,18 +33,53 @@ t_list*  get_node(t_list** llist, char* item)
     t_list *found_node;
 
     found_node = ft_lstfind(*llist, item, find_item);
+    if (!found_node)
+		return (NULL);
+	if (found_node == ft_lstlast(*llist))
+		return (NULL);
     return (found_node);
+}
+
+int check_number_of_element(char* line, int num)
+{
+    int num_of_element;
+
+    num_of_element = ft_count_words(line, ' ');
+    printf("number of element: %d\n", num_of_element);
+    if (num_of_element == num)
+        return (SUCCESS);
+    else
+    {
+        ft_putstr_fd("Error.\n", 1);
+        ft_putstr_fd("Number of elements is not correct.\n", 1);
+        return(ERROR);
+    }
 }
 
 int parse_resolution(t_list** lst)
 {
     t_list* node;
+    char** line;
 
     if (!(node = get_node(lst, "R")))
+    {
+        ft_putstr_fd("Error\n", 1);
+        ft_putstr_fd("Cannot find the resolution or misconfiguration.\n", 1);
         return (ERROR);
-    
-//    printf("%s\n", (char*)node->content);
-    
+    }
+    if (check_number_of_element(node->content, 3) == ERROR)
+        return (ERROR);
+    line = ft_split(node->content, ' ');
+    g_window_width = ft_atoi(line[1]);
+    g_window_height = ft_atoi(line[2]);
+    if (g_window_height <= 0 || g_window_width <= 0)
+    {
+        ft_putstr_fd("Error\n", 1);
+        ft_putstr_fd("Window size is misconfiguration.\n", 1);
+        free_array(line, 3);
+        return (ERROR);
+    }
+    free_array(line, 3);
     return (SUCCESS);
 }
 

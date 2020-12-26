@@ -28,6 +28,7 @@
 
 #include "constant.h"
 #include "struct.h"
+#include "global.h"
 
 void    check_argument(int ac, char** av, int* save);
 void    get_fd(char* arg, t_info* info);
@@ -40,7 +41,8 @@ int parse_resolution(t_list** lst);
 t_list*  get_node(t_list** llist, char* item);
 t_list* ft_lstfind(t_list*lst, char* item, int f(const char *, char *));
 int lst_find_item(const char *content, char* x);
-void   free_array(char** array);
+void   free_array(char** array, int len);
+int check_number_of_element(char* line, int num);
 
 
 #endif

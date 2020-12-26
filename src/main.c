@@ -1,12 +1,12 @@
 #include "cub3d.h"
 
-void   free_array(char** array)
+void   free_array(char** array, int len)
 {
    int i;
-   int len;
 
-   len = sizeof(array) / sizeof(array[0]) + 1;
-   for (i = 0; i <= len; i++)
+   if (!array)
+      return ;
+   for (i = 0; i < len; i++)
       free(array[i]); 
    free(array);
    array = NULL;
@@ -35,7 +35,7 @@ int     main(int ac, char** av)
    
    
    // Check
-   ft_lstiter(info.head_llist, printf);
+   // ft_lstiter(info.head_llist, printf);
    printf("screenshoot = %d\n", info.screenshoot);
    printf("programm continues till this point.\n");
    free_memory(&info, ERROR);

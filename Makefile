@@ -15,12 +15,12 @@ LIBFT = -L./libft/ -lft
 # MINILIBX = -L./minilibx-linux/ -lmlx -lmlx_Linux 		#put this on when we compile sur Linux
 # OTHER_LIB = -lXext -lX11 -lm -lbsd 					#put this on when we compile sur Linux
 
-FLAGS = -g -O3 -fsanitize=address -Wall -Wextra -Werror 
+FLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address 
 # -framework OpenGL -framework AppKit
 # -fsanitize=address: dung de chi ra memory leak neu co
 
 
-CC = gcc -I./include/
+CC = gcc -g -I./include/
 
 RM = rm -f
 

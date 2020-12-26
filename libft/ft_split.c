@@ -50,8 +50,13 @@ static	char	*ft_alloc_word(char const *s, char c)
 	while (s[size] && s[size] != c)
 		size++;
 	if (!(tab = (char *)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	ft_strlcpy(tab, s, size + 1);
+	{
+		free(tab);
+		tab = NULL;
+		return(NULL);
+	}
+	if(ft_strlcpy(tab, s, size + 1) == 0)
+        return (NULL);
 	return (tab);
 }
 
@@ -76,6 +81,7 @@ char			**ft_split(char const *s, char c)
 			while (count > 0)
 				free(tab[count--]);
 			free(tab);
+			tab = NULL;
 			return (NULL);
 		}
 		s += ft_strlen(tab[count]);
