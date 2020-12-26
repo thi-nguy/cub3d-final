@@ -31,6 +31,7 @@ SRC = 	./src/main.c\
 		./src/get_fd.c\
 		./src/parse.c\
 		./src/parse_info.c\
+		./src/parse_info_utils.c\
 		
 
 OBJ = $(SRC:.c=.o)

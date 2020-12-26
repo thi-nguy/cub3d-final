@@ -43,6 +43,8 @@ t_list* ft_lstfind(t_list*lst, char* item, int f(const char *, char *));
 int lst_find_item(const char *content, char* x);
 void   free_array(char** array, int len);
 int check_number_of_element(char* line, int num);
-
+int parse_floor_color(t_list** lst);
+int parse_ceiling_color(t_list** lst);
+int get_rgb_int(char** tab);
 
 #endif

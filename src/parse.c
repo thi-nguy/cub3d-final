@@ -26,6 +26,19 @@ int read_line_into_linked_list(t_list** head_llist, int fd)
     return (SUCCESS);
 }
 
+int parse_info(t_info* info)
+{
+    if (parse_resolution(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_floor_color(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_ceiling_color(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    // parse_image_path(info);
+
+    return(SUCCESS);
+}
+
 int     parse(t_info* info)
 {
     if (read_line_into_linked_list(&info->head_llist, info->fd) == ERROR)
