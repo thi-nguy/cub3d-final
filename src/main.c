@@ -37,6 +37,11 @@ int     main(int ac, char** av)
    printf("Resolution is: W = %d, H = %d\n", g_window_width, g_window_height);
    printf("Floor color is: %d\n", g_floor_color);
    printf("Ceiling color is: %d\n", g_ceiling_color);
+   printf("Sprite's parth is: %s\n", g_sprite_path);
+   printf("NO's parth is: %s\n", g_NO_path );
+   printf("SO's parth is: %s\n", g_SO_path );
+   printf("WE's parth is: %s\n", g_WE_path );
+   printf("EA's parth is: %s\n", g_EA_path );
    printf("screenshoot = %d\n", info.screenshoot);
    printf("programm continues till this point.\n");
    free_memory(&info, ERROR);

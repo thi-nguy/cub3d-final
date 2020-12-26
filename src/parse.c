@@ -34,8 +34,16 @@ int parse_info(t_info* info)
         return(free_memory(info, ERROR));
     if (parse_ceiling_color(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
-    // parse_image_path(info);
-
+    if (parse_sprite_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_NO_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_SO_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_WE_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_EA_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
     return(SUCCESS);
 }
 

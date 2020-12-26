@@ -31,6 +31,7 @@
 #include "global.h"
 
 void    check_argument(int ac, char** av, int* save);
+int		check_format(char *av, char *format);
 void    get_fd(char* arg, t_info* info);
 int     parse(t_info* info);
 int read_line_into_linked_list(t_list** head_llist, int fd);
@@ -46,5 +47,12 @@ int check_number_of_element(char* line, int num);
 int parse_floor_color(t_list** lst);
 int parse_ceiling_color(t_list** lst);
 int get_rgb_int(char** tab);
+
+int parse_sprite_path(t_list** lst);
+int parse_NO_path(t_list** lst);
+
+int parse_SO_path(t_list** lst);
+int parse_WE_path(t_list** lst);
+int parse_EA_path(t_list** lst);
 
 #endif
