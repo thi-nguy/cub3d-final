@@ -30,7 +30,6 @@ int     parse(t_info* info)
 {
     if (read_line_into_linked_list(&info->head_llist, info->fd) == ERROR)
         return (ERROR);
-    //Clear empty line?
     if (parse_info(info) == ERROR)
          return(ERROR);
     // if (parse_map(info) == ERROR)

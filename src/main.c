@@ -34,6 +34,7 @@ int     main(int ac, char** av)
       return (free_memory(&info, ERROR));
    
    
+   // Check
    ft_lstiter(info.head_llist, printf);
    printf("screenshoot = %d\n", info.screenshoot);
    printf("programm continues till this point.\n");
