@@ -11,4 +11,5 @@ char*           g_NO_path;
 char*           g_SO_path;
 char*           g_WE_path;
 char*           g_EA_path;
+int **g_grid_array;
 #endif

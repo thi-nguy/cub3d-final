@@ -30,6 +30,8 @@
 #include "struct.h"
 #include "global.h"
 
+void init_info(t_info* info);
+
 void    check_argument(int ac, char** av, int* save);
 int		check_format(char *av, char *format);
 void    get_fd(char* arg, t_info* info);
@@ -44,6 +46,7 @@ t_list* ft_lstfind(t_list*lst, char* item, int f(const char *, char *));
 int lst_find_item(const char *content, char* x);
 void   free_array(char** array, int len);
 int check_number_of_element(char* line, int num);
+int check_number_of_element_color(char* line, int num);
 int parse_floor_color(t_list** lst);
 int parse_ceiling_color(t_list** lst);
 int get_rgb_int(char** tab);
@@ -54,5 +57,16 @@ int parse_NO_path(t_list** lst);
 int parse_SO_path(t_list** lst);
 int parse_WE_path(t_list** lst);
 int parse_EA_path(t_list** lst);
+
+int parse_map(t_info* info);
+int get_row_column(t_list **lst, int *row, int *col);
+int put_map_in_array(t_list **lst, int row, int col);
+
+t_list*	get_first_line_map(t_list **lst);
+int			skip_space(char *str);
+int		line_is_map(char *line);
+int get_size_node(t_list *lst);
+int** alloc_memory(int row, int col);
+int check_copy_map_element_into_array(t_list *map_lst, int row, int col);
 
 #endif

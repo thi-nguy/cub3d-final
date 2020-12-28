@@ -21,6 +21,8 @@ typedef struct s_info
     t_list* head_llist;
     int screenshoot;
     int fd;
+	int map_row;
+	int map_col;
 } t_info;
 
 

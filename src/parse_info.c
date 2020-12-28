@@ -7,8 +7,7 @@ int parse_resolution(t_list** lst)
 
     if (!(node = get_node(lst, "R")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the resolution or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the resolution or misconfiguration.\n", 1);
         return (ERROR);
     }
     if (check_number_of_element(node->content, 3) == ERROR)
@@ -18,8 +17,7 @@ int parse_resolution(t_list** lst)
     g_window_height = ft_atoi(line[2]);
     if (g_window_height <= 0 || g_window_width <= 0)
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Window size is misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nWindow size is misconfiguration.\n", 1);
         free_array(line, 3);
         return (ERROR);
     }
@@ -35,11 +33,10 @@ int parse_floor_color(t_list** lst)
 
      if (!(node = get_node(lst, "F")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the floor color or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the floor color or misconfiguration.\n", 1);
         return (ERROR);
     }
-    if (check_number_of_element(node->content, 4) == ERROR)
+    if (check_number_of_element_color(node->content + 2, 3) == ERROR)
         return (ERROR);
     line = ft_split(node->content + 2, ',');
     if ((g_floor_color = get_rgb_int(line)) == -1)
@@ -58,11 +55,10 @@ int parse_ceiling_color(t_list** lst)
 
      if (!(node = get_node(lst, "C")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the ceiling color or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the ceiling color or misconfiguration.\n", 1);
         return (ERROR);
     }
-    if (check_number_of_element(node->content, 4) == ERROR)
+    if (check_number_of_element_color(node->content + 2, 3) == ERROR)
         return (ERROR);
     line = ft_split(node->content + 2, ',');
     if ((g_ceiling_color = get_rgb_int(line)) == -1)
@@ -74,33 +70,6 @@ int parse_ceiling_color(t_list** lst)
     return (SUCCESS);
 }
 
-// int parse_texture_path(t_list** lst, char* code)
-// {
-//     t_list* node;
-//     char** line;
-//     char* path;
-
-//     if (!(node = get_node(lst, code)))
-//     {
-//         ft_putstr_fd("Error\n", 1);
-//         ft_putstr_fd("Cannot find the code of texture or misconfiguration.\n", 1);
-//         return (ERROR);
-//     }
-//     if (check_number_of_element(node->content, 2) == ERROR)
-//         return (ERROR);
-//     line = ft_split(node->content, ' ');
-//     if (check_format(line[1], ".xpm") == ERROR)
-//         {
-//             ft_putstr_fd("The file format should be '.xpm'.\n", 1);
-//             free_array(line, 2);
-//             exit(ERROR);
-//         }
-//     path = ft_strdup(line[1]);
-//     free_array(line, 2);
-//     return (SUCCESS);
-
-// }
-
 int parse_sprite_path(t_list** lst)
 {
     t_list* node;
@@ -108,8 +77,7 @@ int parse_sprite_path(t_list** lst)
 
     if (!(node = get_node(lst, "S")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the Sprite or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the Sprite or misconfiguration.\n", 1);
         return (ERROR);
     }
     if (check_number_of_element(node->content, 2) == ERROR)
@@ -117,7 +85,7 @@ int parse_sprite_path(t_list** lst)
     line = ft_split(node->content, ' ');
     if (check_format(line[1], ".xpm") == ERROR)
         {
-            ft_putstr_fd("The file format should be '.xpm'.\n", 1);
+            ft_putstr_fd("Error\nThe file format should be '.xpm'.\n", 1);
             free_array(line, 2);
             exit(ERROR);
         }
@@ -134,8 +102,7 @@ int parse_NO_path(t_list** lst)
 
     if (!(node = get_node(lst, "NO")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the NO's path or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the NO's path or misconfiguration.\n", 1);
         return (ERROR);
     }
     if (check_number_of_element(node->content, 2) == ERROR)
@@ -143,8 +110,7 @@ int parse_NO_path(t_list** lst)
     line = ft_split(node->content, ' ');
     if (check_format(line[1], ".xpm") == ERROR)
         {
-            ft_putstr_fd("Error\n", 1);
-            ft_putstr_fd("The file format should be '.xpm'.\n", 1);
+            ft_putstr_fd("Error\nThe file format should be '.xpm'.\n", 1);
             free_array(line, 2);
             exit(ERROR);
         }
@@ -160,8 +126,7 @@ int parse_SO_path(t_list** lst)
 
     if (!(node = get_node(lst, "SO")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the SO's path or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the SO's path or misconfiguration.\n", 1);
         return (ERROR);
     }
     if (check_number_of_element(node->content, 2) == ERROR)
@@ -169,8 +134,7 @@ int parse_SO_path(t_list** lst)
     line = ft_split(node->content, ' ');
     if (check_format(line[1], ".xpm") == ERROR)
         {
-            ft_putstr_fd("Error\n", 1);
-            ft_putstr_fd("The file format should be '.xpm'.\n", 1);
+            ft_putstr_fd("Error\nThe file format should be '.xpm'.\n", 1);
             free_array(line, 2);
             exit(ERROR);
         }
@@ -186,8 +150,7 @@ int parse_WE_path(t_list** lst)
 
     if (!(node = get_node(lst, "WE")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the WE's path or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the WE's path or misconfiguration.\n", 1);
         return (ERROR);
     }
     if (check_number_of_element(node->content, 2) == ERROR)
@@ -195,8 +158,7 @@ int parse_WE_path(t_list** lst)
     line = ft_split(node->content, ' ');
     if (check_format(line[1], ".xpm") == ERROR)
         {
-            ft_putstr_fd("Error\n", 1);
-            ft_putstr_fd("The file format should be '.xpm'.\n", 1);
+            ft_putstr_fd("Error\nThe file format should be '.xpm'.\n", 1);
             free_array(line, 2);
             exit(ERROR);
         }
@@ -212,8 +174,7 @@ int parse_EA_path(t_list** lst)
 
     if (!(node = get_node(lst, "EA")))
     {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Cannot find the EA's path or misconfiguration.\n", 1);
+        ft_putstr_fd("Error\nCannot find the EA's path or misconfiguration.\n", 1);
         return (ERROR);
     }
     if (check_number_of_element(node->content, 2) == ERROR)
@@ -221,12 +182,32 @@ int parse_EA_path(t_list** lst)
     line = ft_split(node->content, ' ');
     if (check_format(line[1], ".xpm") == ERROR)
         {
-            ft_putstr_fd("Error\n", 1);
-            ft_putstr_fd("The file format should be '.xpm'.\n", 1);
+            ft_putstr_fd("Error\nThe file format should be '.xpm'.\n", 1);
             free_array(line, 2);
             exit(ERROR);
         }
     g_EA_path = ft_strdup(line[1]);
     free_array(line, 2);
     return (SUCCESS);
+}
+
+int parse_info(t_info* info)
+{
+    if (parse_resolution(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_floor_color(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_ceiling_color(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_sprite_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_NO_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_SO_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_WE_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    if (parse_EA_path(&info->head_llist) == ERROR)
+        return(free_memory(info, ERROR));
+    return(SUCCESS);
 }

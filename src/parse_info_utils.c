@@ -60,6 +60,20 @@ int check_number_of_element(char* line, int num)
     }
 }
 
+int check_number_of_element_color(char* line, int num)
+{
+    int num_of_element;
+
+    num_of_element = ft_count_words(line, ',');
+    if (num_of_element == num)
+        return (SUCCESS);
+    else
+    {
+        ft_putstr_fd("Error.\n", 1);
+        ft_putstr_fd("Number of elements is not correct.\n", 1);
+        return(ERROR);
+    }
+}
 
 int get_rgb_int(char** tab)
 {

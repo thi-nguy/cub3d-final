@@ -26,26 +26,6 @@ int read_line_into_linked_list(t_list** head_llist, int fd)
     return (SUCCESS);
 }
 
-int parse_info(t_info* info)
-{
-    if (parse_resolution(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_floor_color(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_ceiling_color(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_sprite_path(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_NO_path(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_SO_path(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_WE_path(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    if (parse_EA_path(&info->head_llist) == ERROR)
-        return(free_memory(info, ERROR));
-    return(SUCCESS);
-}
 
 int     parse(t_info* info)
 {
@@ -53,7 +33,7 @@ int     parse(t_info* info)
         return (ERROR);
     if (parse_info(info) == ERROR)
          return(ERROR);
-    // if (parse_map(info) == ERROR)
-    //     return (ERROR);
+    if (parse_map(info) == ERROR)
+        return (ERROR);
     return (SUCCESS);
 }

@@ -32,7 +32,8 @@ SRC = 	./src/main.c\
 		./src/parse.c\
 		./src/parse_info.c\
 		./src/parse_info_utils.c\
-		
+		./src/parse_map.c\
+		./src/parse_map_utils.c\
 
 OBJ = $(SRC:.c=.o)
 
