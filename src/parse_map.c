@@ -45,14 +45,42 @@ int** alloc_memory(int row, int col)
     return (new_array);
 }
 
+char    check_valid_element(char c)
+{
+    // static int count;
+    
+    // count = 0;
+    if (!c)
+        return (35);// 35 : #
+    else if (c == '0' || c == '1' || c == '2')
+        return (c);// - 48;
+    else if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+    {
+        g_count_player++;
+        if (g_count_player > 1)
+        {
+            ft_putstr_fd("Error\nThere are more than one player\n", 1);
+            return (ERROR);
+        }
+        return (c);
+    }
+    else if (ft_isspace(c))
+        return(43); // +
+    else
+        return (ERROR); // g_grid_array[i][j] = 37; // %
+
+}
+
 int check_copy_map_element_into_array(t_list *map_lst, int row, int col)
 {
     int i;
     int j;
+    // static int *count_player;
     char *line;
     t_list *tmp;
 
     i = 0;
+    g_count_player = 0;
     tmp = map_lst;
     line = (char*)tmp->content;
     while(line && i < row)
@@ -60,17 +88,13 @@ int check_copy_map_element_into_array(t_list *map_lst, int row, int col)
         j = 0;
         while (j < col)
         {
-            if (!line[j])
-                g_grid_array[i][j] = 35; // #
-            else if (line[j] == '0' || line[j] == '1' || line[j] == '2')
-                g_grid_array[i][j] = line[j];// - 48;
-            else if (line[j] == 'N' || line[j] == 'S' || line[j] == 'W' || line[j] == 'E')
-                g_grid_array[i][j] = line[j];
-            else if (ft_isspace(line[j]))
-                g_grid_array[i][j] = 43; // +
-            else
-                g_grid_array[i][j] = 37; // %
-                //return (ERROR);
+            g_grid_array[i][j] = check_valid_element(line[j]);
+            if (g_grid_array[i][j] == ERROR)
+            {
+                if (g_count_player == 1)
+                    ft_putstr_fd("Error\nMap's elements are not valid.\n", 1);
+                return (ERROR);//, count_player);
+            }
             j++;
         }
         i++;
@@ -79,7 +103,6 @@ int check_copy_map_element_into_array(t_list *map_lst, int row, int col)
             line = (char*)tmp->content;
     }
     return (SUCCESS);
-
 }
 
 int put_map_in_array(t_list **lst, int row, int col)
@@ -97,10 +120,7 @@ int put_map_in_array(t_list **lst, int row, int col)
         return (ERROR);
     }
     if (check_copy_map_element_into_array(map_llist, row, col) == ERROR)
-    {
-        ft_putstr_fd("Error\nElement is not valid\nCannot get map into array.\n", 1);
         return (ERROR);
-    }
     
     int i = 0;
     int j;

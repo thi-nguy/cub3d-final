@@ -68,5 +68,6 @@ int		line_is_map(char *line);
 int get_size_node(t_list *lst);
 int** alloc_memory(int row, int col);
 int check_copy_map_element_into_array(t_list *map_lst, int row, int col);
+char    check_valid_element(char c);
 
 #endif
