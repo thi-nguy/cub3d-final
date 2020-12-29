@@ -58,3 +58,5 @@ int get_size_node(t_list *lst)
 	}
 	return (max_size);
 }
+
+

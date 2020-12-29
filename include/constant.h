@@ -39,6 +39,6 @@
 
 #define SUCCESS 1
 #define ERROR 0
-
+#define VALID_ERROR -1
 
 #endif

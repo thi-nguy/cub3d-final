@@ -70,4 +70,11 @@ int** alloc_memory(int row, int col);
 int check_copy_map_element_into_array(t_list *map_lst, int row, int col);
 char    check_valid_element(char c);
 
+int check_if_map_close(t_info *info);
+int flood_fill(int **map_copy, int map_row, int map_col, int row, int col, int i);
+
+void     get_player_position(t_info *info, int row, int col);
+
+
+
 #endif

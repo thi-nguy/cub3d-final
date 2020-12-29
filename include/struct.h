@@ -23,6 +23,9 @@ typedef struct s_info
     int fd;
 	int map_row;
 	int map_col;
+	int player_start_x;
+	int player_start_y;
+	double player_start_angle;
 } t_info;
 
 

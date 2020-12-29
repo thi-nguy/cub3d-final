@@ -26,6 +26,8 @@ void init_info(t_info* info)
    info->map_row = 0;
    info->screenshoot = 0;
    info->head_llist = NULL;
+   info->player_start_x = -1;
+   info->player_start_y = -1;
 }
 
 void init_global(void)
@@ -40,6 +42,7 @@ void init_global(void)
    g_grid_array = NULL;
    g_ceiling_color = 0;
    g_floor_color = 0;
+   g_count_player = 0;
 }
 
 int     main(int ac, char** av)
@@ -52,10 +55,11 @@ int     main(int ac, char** av)
    get_fd(av[1], &info);
    if (parse(&info) == ERROR)
       return (free_memory(&info, ERROR));
-   // printf("Found Map is below:\n");
-   // ft_lstiter(map_llist, printf);
+   
    
    // Check
+   // printf("Found Map is below:\n");
+   // ft_lstiter(map_llist, printf);
    // ft_lstiter(info.head_llist, printf);
    // printf("Resolution is: W = %d, H = %d\n", g_window_width, g_window_height);
    // printf("Floor color is: %d\n", g_floor_color);
@@ -65,14 +69,15 @@ int     main(int ac, char** av)
    // printf("SO's parth is: %s\n", g_SO_path );
    // printf("WE's parth is: %s\n", g_WE_path );
    // printf("EA's parth is: %s\n", g_EA_path );
-   // printf("map_row is: %d\n", info.map_row);
-   // printf("map_col is: %d\n", info.map_col);
-   
+   printf("map_row is: %d\n", info.map_row);
+   printf("map_col is: %d\n", info.map_col);
+   printf("player_start_x is: %i\n", info.player_start_x);
+   printf("player_start_y is: %i\n", info.player_start_y);
+
 
    // printf("screenshoot = %d\n", info.screenshoot);
-   // printf("programm continues till this point.\n");
+   printf("programm continues till this point.\n");
    free_memory(&info, ERROR);
    // Cần kiểm tra memory leak
-   // while (1);
    return (0);
 }
