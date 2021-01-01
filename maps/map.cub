@@ -1,13 +1,12 @@
 R 123 456
-NO   ./textures/brick.xpm 
-SO    ./textures/blue.xpm
-WE    ./textures/wood.xpm
-EA   ./textures/grey.xpm
-S   ./textures/chest.xpm
+NO   ./textures/wall_korean_n.xpm 
+SO    ./textures/wall_korean_s.xpm
+WE    ./textures/wall_korean_w.xpm
+EA   ./textures/wall_korean_e.xpm
+S   ./textures/skulls.xpm
 F 224,   172,   105
 C 205,   249,   255
 
 11111
-1N001
-1000
+1N021
 11111

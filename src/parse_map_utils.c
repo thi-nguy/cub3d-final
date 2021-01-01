@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "cub3d.h"
 
 int			skip_space(char *str)
 {
@@ -59,4 +59,52 @@ int get_size_node(t_list *lst)
 	return (max_size);
 }
 
+int** alloc_memory(int row, int col)
+{
+    int** new_array;
+    int i;
 
+    i = -1;
+    if (!(new_array = malloc(sizeof(int*) * row)))
+		return (NULL);
+    while(++i < row)
+    {
+	    if (!(new_array[i] = malloc(sizeof(int) * col)))
+        {
+            while (--i >= 0)
+            {
+                free(new_array[i]);
+                new_array = NULL;
+            }
+            return (NULL);
+        }    
+    }
+    return (new_array);
+}
+
+int **copy_map_grid(int map_row, int map_col)
+{
+    int **tmp;
+    int a;
+    int b;
+
+   tmp = malloc(sizeof(int *) * map_row);
+    a = 0;
+    while (a < map_row)
+    {
+        tmp[a] = malloc(sizeof(int) * map_col);
+        a++;
+    }
+    a = 0;
+    while (a < map_row)
+    {
+        b = 0;
+        while (b < map_col)
+        {
+            tmp[a][b] = g_grid_array[a][b];
+            b++;
+        }
+        a++;
+    }
+    return (tmp);
+}

@@ -22,8 +22,8 @@
 
 #include "../libft/libft.h"
 //----------- Open this on when compiling on Linux-----------
-// #include "../minilibx-linux/mlx.h"
-// #include "../minilibx-linux/mlx_int.h"
+#include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx_int.h"
 //-----------------------------------------------------------
 
 #include "constant.h"
@@ -67,6 +67,7 @@ int			skip_space(char *str);
 int		line_is_map(char *line);
 int get_size_node(t_list *lst);
 int** alloc_memory(int row, int col);
+int **copy_map_grid(int map_row, int map_col);
 int check_copy_map_element_into_array(t_list *map_lst, int row, int col);
 char    check_valid_element(char c);
 
@@ -75,6 +76,22 @@ int flood_fill(int **map_copy, int map_row, int map_col, int row, int col, int i
 
 void     get_player_position(t_info *info, int row, int col);
 
+int init_mlx(void);
+void  init_player(t_info *info);
+void init_global(void);
+
+void    put_wall_texture_into_array(void);
+int  load_wall_texture_ptr(t_wall_texture *texture);
+
+void  init_g_wall_texture(void);
+void  get_global(t_info *info);
+float get_rotation_angle(double angle);
+
+int  init_sprite(void);
+int		count_sprite(int **map);
+int		load_ptr_and_data_sprite(void);
+void		get_position_sprite(t_sprite *sprite, int **map);
+int	ft_mallocsprite(t_sprite *sprite);
 
 
 #endif

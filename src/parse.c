@@ -1,7 +1,5 @@
 #include "cub3d.h"
 
-
-
 int read_line_into_linked_list(t_list** head_llist, int fd)
 {
     char* line;
@@ -35,5 +33,6 @@ int     parse(t_info* info)
          return(ERROR);
     if (parse_map(info) == ERROR)
         return (ERROR);
+    put_wall_texture_into_array();
     return (SUCCESS);
 }

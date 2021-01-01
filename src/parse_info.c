@@ -115,6 +115,7 @@ int parse_NO_path(t_list** lst)
             exit(ERROR);
         }
     g_NO_path = ft_strdup(line[1]);
+
     free_array(line, 2);
     return (SUCCESS);
 }
@@ -191,6 +192,21 @@ int parse_EA_path(t_list** lst)
     return (SUCCESS);
 }
 
+void    put_wall_texture_into_array(void)
+{
+    g_wall_texture[0].path = ft_strdup(g_WE_path);
+    g_wall_texture[0].id = ft_strdup("WE");
+    
+    g_wall_texture[1].id = ft_strdup("NO");
+    g_wall_texture[1].path = ft_strdup(g_NO_path);
+    
+    g_wall_texture[2].id = ft_strdup("SO");
+    g_wall_texture[2].path = ft_strdup(g_SO_path);
+
+    g_wall_texture[3].id = ft_strdup("EA");
+    g_wall_texture[3].path = ft_strdup(g_EA_path);
+}
+
 int parse_info(t_info* info)
 {
     if (parse_resolution(&info->head_llist) == ERROR)
@@ -209,5 +225,6 @@ int parse_info(t_info* info)
         return(free_memory(info, ERROR));
     if (parse_EA_path(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
+    
     return(SUCCESS);
 }

@@ -40,5 +40,6 @@
 #define SUCCESS 1
 #define ERROR 0
 #define VALID_ERROR -1
+#define WALL_ERROR -10000
 
 #endif

@@ -12,8 +12,8 @@
 
 LIBFT = -L./libft/ -lft
 
-# MINILIBX = -L./minilibx-linux/ -lmlx -lmlx_Linux 		#put this on when we compile sur Linux
-# OTHER_LIB = -lXext -lX11 -lm -lbsd 					#put this on when we compile sur Linux
+MINILIBX = -L./minilibx-linux/ -lmlx -lmlx_Linux 		#put this on when we compile sur Linux
+OTHER_LIB = -lXext -lX11 -lm -lbsd 					#put this on when we compile sur Linux
 
 FLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address 
 # -framework OpenGL -framework AppKit
@@ -34,6 +34,13 @@ SRC = 	./src/main.c\
 		./src/parse_info_utils.c\
 		./src/parse_map.c\
 		./src/parse_map_utils.c\
+		./src/init_global.c\
+		./src/init_global_utils.c\
+		./src/free_memory.c\
+		./src/check_copy_map_element_into_array.c\
+		./src/check_if_map_close.c\
+		./src/init_sprite.c\
+
 
 OBJ = $(SRC:.c=.o)
 
