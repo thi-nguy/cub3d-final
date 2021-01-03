@@ -101,7 +101,7 @@ static void		draw_player_rect(int cor_x, int cor_y, int width, int height);
 
 int init_image(void);
 void draw_mini_map(void);
-void	draw_map(int color_wall, int color_space, int color_sprite);
+void	draw_map(int color_wall, int color_space);
 void	draw_grid(int x, int y, int x1, int y1, int tileColor);
 void	my_mlx_put_pixel(int x, int y, int color);
 
@@ -112,6 +112,9 @@ int		close_window(int key_code, t_info *info);
 int		key_release(int key_code);
 int		key_pressed(int key_code, t_info *info);
 
-
+void	draw_ceiling(void);
+void	draw_floor(void);
+void	draw_sprite(int color);
+void	draw_player(int color);
 
 #endif

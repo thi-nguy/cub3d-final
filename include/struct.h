@@ -83,7 +83,7 @@ typedef struct		s_sprite
 typedef struct		s_image
 {
 	void			*mlx_ptr;
-	char				*data_addr;
+	int				*data_addr;
 	int				bpp;
 	int				endian;
 	int				line_length;

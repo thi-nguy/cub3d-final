@@ -41,6 +41,7 @@ SRC = 	./src/main.c\
 		./src/check_if_map_close.c\
 		./src/init_sprite.c\
 		./src/game_loop.c\
+		./src/draw_floor_ceiling.c\
 
 
 OBJ = $(SRC:.c=.o)

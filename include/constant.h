@@ -41,7 +41,7 @@
 #define ERROR 0
 #define VALID_ERROR -1
 #define WALL_ERROR -10000
-#define SIZE_MINI_MAP 0.5
+#define SIZE_MINI_MAP 0.10
 
 # define QUIT 65307
 
