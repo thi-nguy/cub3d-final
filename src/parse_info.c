@@ -13,9 +13,9 @@ int parse_resolution(t_list** lst)
     if (check_number_of_element(node->content, 3) == ERROR)
         return (ERROR);
     line = ft_split(node->content, ' ');
-    g_window_width = ft_atoi(line[1]);
-    g_window_height = ft_atoi(line[2]);
-    if (g_window_height <= 0 || g_window_width <= 0)
+    g_window.width = ft_atoi(line[1]);
+    g_window.height = ft_atoi(line[2]);
+    if (g_window.width <= 0 || g_window.height <= 0)
     {
         ft_putstr_fd("Error\nWindow size is misconfiguration.\n", 1);
         free_array(line, 3);
@@ -89,7 +89,7 @@ int parse_sprite_path(t_list** lst)
             free_array(line, 2);
             exit(ERROR);
         }
-    g_sprite_path = ft_strdup(line[1]);
+    g_sprite.path = ft_strdup(line[1]);
     free_array(line, 2);
     return (SUCCESS);
 }
@@ -194,17 +194,14 @@ int parse_EA_path(t_list** lst)
 
 void    put_wall_texture_into_array(void)
 {
-    g_wall_texture[0].path = ft_strdup(g_WE_path);
-    g_wall_texture[0].id = ft_strdup("WE");
-    
-    g_wall_texture[1].id = ft_strdup("NO");
-    g_wall_texture[1].path = ft_strdup(g_NO_path);
-    
-    g_wall_texture[2].id = ft_strdup("SO");
-    g_wall_texture[2].path = ft_strdup(g_SO_path);
-
-    g_wall_texture[3].id = ft_strdup("EA");
-    g_wall_texture[3].path = ft_strdup(g_EA_path);
+    g_texture[0].path = ft_strdup(g_WE_path);
+    g_texture[0].id = ft_strdup("WE");
+    g_texture[1].id = ft_strdup("NO");
+    g_texture[1].path = ft_strdup(g_NO_path);
+    g_texture[2].id = ft_strdup("SO");
+    g_texture[2].path = ft_strdup(g_SO_path);
+    g_texture[3].id = ft_strdup("EA");
+    g_texture[3].path = ft_strdup(g_EA_path);
 }
 
 int parse_info(t_info* info)

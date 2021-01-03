@@ -1,5 +1,71 @@
 #include "cub3d.h"
 
+int		close_window(int key_code, t_info *info)
+{
+	(void)key_code;
+   exit(free_memory(info, SUCCESS));
+}
+
+int		key_pressed(int key_code, t_info *info)
+{
+	if (key_code == QUIT)
+		exit(free_memory(info, SUCCESS));
+   
+   // if (key_code == UP_ARROW)
+	// 	g_player.walk_direction = +1;
+	// else if (key_code == DOWN_ARROW)
+	// 	g_player.walk_direction = -1;
+	// else if (key_code == RIGHT_ARROW)
+	// 	g_player.turn_direction = +1;
+	// else if (key_code == LEFT_ARROW)
+	// 	g_player.turn_direction = -1;
+	
+	// else if (key_code == TRANSLATION_RIGHT)
+	// {
+	// 	g_player.translation = 1;
+	// 	g_player.walk_direction = +1;
+	// }
+	// else if (key_code == TRANSLATION_LEFT)
+	// {
+	// 	g_player.translation = -1;
+	// 	g_player.walk_direction = -1;
+	// }
+	return (0);
+}
+
+
+int		key_release(int key_code)
+{
+	// if (key_code == UP_ARROW)
+	// 	g_player.walk_direction = 0;
+	// else if (key_code == DOWN_ARROW)
+	// 	g_player.walk_direction = 0;
+	// else if (key_code == RIGHT_ARROW)
+	// 	g_player.turn_direction = 0;
+	// else if (key_code == LEFT_ARROW)
+	// 	g_player.turn_direction = 0;
+	// else if (key_code == TRANSLATION_RIGHT || key_code == TRANSLATION_LEFT)
+	// {
+	// 	g_player.translation = 0;
+	// 	g_player.walk_direction = 0;
+	// }
+	return (0);
+}
+
+
+void	game_loop(t_info *info)
+{
+	int	key_code;
+
+	key_code = 0;
+   mlx_hook(g_window.mlx_ptr, 17, 1L << 17, &close_window, &info);
+	mlx_hook(g_window.mlx_ptr, 2, (1L << 0), &key_pressed, &info);
+	mlx_hook(g_window.mlx_ptr, 3, (1L << 1), &key_release, &key_code);
+	mlx_loop_hook(g_mlx, &create_one_frame, &info);
+	mlx_loop(g_mlx);
+}
+
+
 int     main(int ac, char** av)
 {
    t_info info;
@@ -12,12 +78,29 @@ int     main(int ac, char** av)
       return (free_memory(&info, ERROR));
    if (init_mlx() == ERROR)
       return (free_memory(&info, ERROR));
-   if(load_wall_texture_ptr(g_wall_texture) == ERROR)
+   if (init_window(&info) == ERROR)
+      return (free_memory(&info, ERROR));
+   if(load_wall_texture_ptr() == ERROR)
       return (free_memory(&info, ERROR));
    get_global(&info);
    init_player(&info);
    if (init_sprite() == ERROR)
       return (free_memory(&info, ERROR));
+   
+   
+   if(info.screenshoot == 1)
+      create_one_frame(&info);
+   else
+      game_loop(&info);
+   
+
+   
+
+
+
+
+
+
 
    printf("Player:\n");
    printf("radius:%i\n", player.radius);
@@ -74,8 +157,8 @@ int     main(int ac, char** av)
    printf("programm continues till this point.\n");
    
    free_memory(&info, ERROR);
-   free(g_mlx_ptr);
-   g_mlx_ptr = NULL;
+   free(g_mlx);
+   g_mlx = NULL;
    // Cần kiểm tra memory leak
    return (0);
 }

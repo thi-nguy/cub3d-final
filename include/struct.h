@@ -13,16 +13,28 @@ typedef struct s_info
 	int player_start_angle;
 } t_info;
 
+typedef struct s_window
+{
+	void *mlx_ptr;
+	int width;
+	int height;
+
+} t_window;
+
 typedef struct s_wall_texture
 {
 	char *id;
 	char *path;
-	void *texture_ptr;
-	int height;
+	void *mlx_ptr;
+	char *data_addr;
 	int width;
-	int *texture;
-
+	int height;
+	int				bpp;
+	int				endian;
+	int				line_length;
 }	t_wall_texture;
+
+
 
 typedef struct s_player
 {
@@ -42,10 +54,15 @@ typedef struct s_player
 typedef struct		s_sprite
 {
 	int				nb_sprite;
-	void			*ptr;
+	char			*path;
+	void			*mlx_ptr;
+	char			*data_addr;
+	int				bpp;
+	int				endian;
+	int				line_length;
 	int				width;
 	int				height;
-	int				*data_addr;
+
 	float			*x;
 	float			*y;
 	float			*distance;
@@ -54,10 +71,7 @@ typedef struct		s_sprite
 	// float			dirx;
 	// float			plany;
 	// float			planx;
-	// int				size_l;
 	// float			angle;
-	// int				bpp;
-	// int				endian;
 	// char			*path;
 	// int				spritescreenx;
 	// int				drawstarty;
@@ -65,5 +79,16 @@ typedef struct		s_sprite
 	// int				drawstartx;
 	// int				drawendx;
 }					t_sprite;
+
+typedef struct		s_image
+{
+	void			*mlx_ptr;
+	char				*data_addr;
+	int				bpp;
+	int				endian;
+	int				line_length;
+	// int				width;
+	// int				height;
+}					t_image;
 
 #endif

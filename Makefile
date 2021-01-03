@@ -40,6 +40,7 @@ SRC = 	./src/main.c\
 		./src/check_copy_map_element_into_array.c\
 		./src/check_if_map_close.c\
 		./src/init_sprite.c\
+		./src/game_loop.c\
 
 
 OBJ = $(SRC:.c=.o)

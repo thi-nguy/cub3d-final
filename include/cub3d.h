@@ -81,7 +81,7 @@ void  init_player(t_info *info);
 void init_global(void);
 
 void    put_wall_texture_into_array(void);
-int  load_wall_texture_ptr(t_wall_texture *texture);
+int  load_wall_texture_ptr(void);
 
 void  init_g_wall_texture(void);
 void  get_global(t_info *info);
@@ -92,6 +92,26 @@ int		count_sprite(int **map);
 int		load_ptr_and_data_sprite(void);
 void		get_position_sprite(t_sprite *sprite, int **map);
 int	ft_mallocsprite(t_sprite *sprite);
+
+int			init_window(t_info *info);
+
+static void		draw_player_rect(int cor_x, int cor_y, int width, int height);
+
+
+
+int init_image(void);
+void draw_mini_map(void);
+void	draw_map(int color_wall, int color_space, int color_sprite);
+void	draw_grid(int x, int y, int x1, int y1, int tileColor);
+void	my_mlx_put_pixel(int x, int y, int color);
+
+void	game_loop(t_info *info);
+int create_one_frame(t_info *info);
+int		close_window(int key_code, t_info *info);
+
+int		key_release(int key_code);
+int		key_pressed(int key_code, t_info *info);
+
 
 
 #endif

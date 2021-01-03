@@ -18,12 +18,12 @@ int	ft_mallocsprite(t_sprite *sprite)
 		ft_putstr_fd("Error\nFailer malloc\n", 1);
 		return(ERROR);
 	}
-	if (!(sprite->buffer = malloc(sizeof(float) * g_window_width)))
+	if (!(sprite->buffer = malloc(sizeof(float) * g_window.width)))
 	{
 		ft_putstr_fd("Error\nFailer malloc\n", 1);
 		return(ERROR);
 	}
-	ft_bzero(sprite->buffer, sizeof(float) * g_window_width);
+	ft_bzero(sprite->buffer, sizeof(float) * g_window.width);
    return (SUCCESS);
 }
 
@@ -78,20 +78,14 @@ void		get_position_sprite(t_sprite *sprite, int **map)
 
 int		load_ptr_and_data_sprite(void)
 {
-	int			bpp;
-	int			size_line;
-	int			endian;
-
-	sprite.ptr = mlx_xpm_file_to_image(g_mlx_ptr, g_sprite_path,
-	&sprite.width, &sprite.height);
-	if (!sprite.ptr)
+	g_sprite.mlx_ptr = mlx_xpm_file_to_image(g_mlx, g_sprite.path, &g_sprite.width, &g_sprite.height);
+	if (!g_sprite.mlx_ptr)
 	{
 		ft_putstr_fd("Error\nCannot get pointer to file of sprite's texture\n", 1);
 		return (ERROR);
 	}
-	sprite.data_addr = (int *)mlx_get_data_addr(sprite.ptr,
-	&bpp, &size_line, &endian);
-	if (!sprite.data_addr)
+	g_sprite.data_addr = mlx_get_data_addr(g_sprite.mlx_ptr, &g_sprite.bpp, &g_sprite.line_length, &g_sprite.endian); //tai sao chuyen (int*) o day?
+	if (!g_sprite.data_addr)
 	{
 		ft_putstr_fd("Error\nCannot get data address of sprite's texture\n", 1);
 		return( ERROR);
@@ -101,16 +95,16 @@ int		load_ptr_and_data_sprite(void)
 
 int  init_sprite(void)
 {
-   sprite.nb_sprite = count_sprite(g_grid_array);
-   if (sprite.nb_sprite <= 0)
+   g_sprite.nb_sprite = count_sprite(g_grid_array);
+   if (g_sprite.nb_sprite <= 0)
    {
       ft_putstr_fd("Error\nThere is no sprite in the map.\n", 1);
       return (ERROR);
    }
-   if (ft_mallocsprite(&sprite) == ERROR)
+   if (ft_mallocsprite(&g_sprite) == ERROR)
       return (ERROR);
    if (load_ptr_and_data_sprite() == ERROR)
       return (ERROR);
-   get_position_sprite(&sprite, g_grid_array);
+   get_position_sprite(&g_sprite, g_grid_array);
    return (SUCCESS);
 }

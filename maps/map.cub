@@ -1,4 +1,4 @@
-R 123 456
+R 1000 800
 NO   ./textures/wall_korean_n.xpm 
 SO    ./textures/wall_korean_s.xpm
 WE    ./textures/wall_korean_w.xpm
