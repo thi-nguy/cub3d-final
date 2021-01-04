@@ -40,15 +40,15 @@ typedef struct s_player
 {
 	float x;
 	float y;
-	float width;// width, height of a rectangle
+	float width;// width, height of the rectangle player
 	float height;
-	float view_arrow; //length of view arrow
+	float rotaion_line_length; //length of rotation line
 	int		turnDirection; // -1 for left, +1 for right
 	int		walkDirection; // -1 for backward, +1 forward
 	float	rotationAngle;
 	float	walkSpeed; // how fast going front back
 	float	turnSpeed; //Moi lan an nut la cong them bao nhieu angle? how fast in angle per second we change per frame, here is 3 degree/frame
-	int		radius;
+	// int		radius;
 }	t_player;
 
 typedef struct		s_sprite

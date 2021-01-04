@@ -8,47 +8,38 @@ int		close_window(int key_code, t_info *info)
 
 int		key_pressed(int key_code, t_info *info)
 {
-	if (key_code == QUIT)
-		exit(free_memory(info, SUCCESS));
-   
-   // if (key_code == UP_ARROW)
-	// 	g_player.walk_direction = +1;
-	// else if (key_code == DOWN_ARROW)
-	// 	g_player.walk_direction = -1;
-	// else if (key_code == RIGHT_ARROW)
-	// 	g_player.turn_direction = +1;
-	// else if (key_code == LEFT_ARROW)
-	// 	g_player.turn_direction = -1;
-	
-	// else if (key_code == TRANSLATION_RIGHT)
-	// {
-	// 	g_player.translation = 1;
-	// 	g_player.walk_direction = +1;
-	// }
-	// else if (key_code == TRANSLATION_LEFT)
-	// {
-	// 	g_player.translation = -1;
-	// 	g_player.walk_direction = -1;
-	// }
+	if (key_code == ESC)
+      exit(SUCCESS);
+   else if (key_code == KEY_W)
+	 	player.walkDirection = +1;
+	else if (key_code == KEY_S)
+	   player.walkDirection = -1;
+	else if (key_code == KEY_D)
+	 	player.turnDirection = +1;
+	else if (key_code == KEY_A)
+	 	player.turnDirection = -1;
+   // else if (key_code == LEFT)
+
+   // else if (key_code == RIGHT)
+
 	return (0);
 }
 
 
 int		key_release(int key_code)
 {
-	// if (key_code == UP_ARROW)
-	// 	g_player.walk_direction = 0;
-	// else if (key_code == DOWN_ARROW)
-	// 	g_player.walk_direction = 0;
-	// else if (key_code == RIGHT_ARROW)
-	// 	g_player.turn_direction = 0;
-	// else if (key_code == LEFT_ARROW)
-	// 	g_player.turn_direction = 0;
-	// else if (key_code == TRANSLATION_RIGHT || key_code == TRANSLATION_LEFT)
-	// {
-	// 	g_player.translation = 0;
-	// 	g_player.walk_direction = 0;
-	// }
+   if (key_code == KEY_W)
+	 	player.walkDirection = 0;
+	else if (key_code == KEY_S)
+	   player.walkDirection = 0;
+	else if (key_code == KEY_A)
+	 	player.turnDirection = 0;
+	else if (key_code == KEY_D)
+	 	player.turnDirection = 0;
+   // else if (key_code == LEFT)
+
+   // else if (key_code == RIGHT)
+
 	return (0);
 }
 
@@ -64,6 +55,8 @@ void	game_loop(t_info *info)
 	mlx_loop_hook(g_mlx, &create_one_frame, &info);
 	mlx_loop(g_mlx);
 }
+
+
 
 
 int     main(int ac, char** av)
@@ -102,15 +95,15 @@ int     main(int ac, char** av)
 
 
 
-   printf("Player:\n");
-   printf("radius:%i\n", player.radius);
-   printf("turnDirection:%i\n", player.turnDirection);
-   printf("walkDirection:%i\n", player.walkDirection);
-   printf("walkSpeeds:%f\n", player.walkSpeed);
-   printf("turnSpeed:%f\n", player.turnSpeed);
-   printf("x:%f\n", player.x);
-   printf("y:%f\n", player.y);
-   printf("rotationAngle:%f\n", player.rotationAngle);
+   // printf("Player:\n");
+   // // printf("radius:%i\n", player.radius);
+   // printf("turnDirection:%i\n", player.turnDirection);
+   // printf("walkDirection:%i\n", player.walkDirection);
+   // printf("walkSpeeds:%f\n", player.walkSpeed);
+   // printf("turnSpeed:%f\n", player.turnSpeed);
+   // printf("x:%f\n", player.x);
+   // printf("y:%f\n", player.y);
+   // printf("rotationAngle:%f\n", player.rotationAngle);
    
    // Check
    // printf("Found Map is below:\n");

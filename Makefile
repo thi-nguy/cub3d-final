@@ -42,6 +42,7 @@ SRC = 	./src/main.c\
 		./src/init_sprite.c\
 		./src/game_loop.c\
 		./src/draw_floor_ceiling.c\
+		./src/draw_mini_map.c\
 
 
 OBJ = $(SRC:.c=.o)

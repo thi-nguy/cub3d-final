@@ -116,5 +116,9 @@ void	draw_ceiling(void);
 void	draw_floor(void);
 void	draw_sprite(int color);
 void	draw_player(int color);
+void	draw_rotation_line(void);
+void		draw_line(int cor_y, int cor_x);
+
+void move_player(void);
 
 #endif
