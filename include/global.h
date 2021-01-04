@@ -23,5 +23,7 @@ float     g_fov;
 int **g_grid_array;
 int g_count_player;
 
+t_ray ray;
+
 #endif
 

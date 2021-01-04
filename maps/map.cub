@@ -1,4 +1,4 @@
-R 800 600
+R 1600 800
 NO   ./textures/wall_korean_n.xpm 
 SO    ./textures/wall_korean_s.xpm
 WE    ./textures/wall_korean_w.xpm

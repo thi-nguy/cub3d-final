@@ -120,5 +120,44 @@ void	draw_rotation_line(void);
 void		draw_line(int cor_y, int cor_x);
 
 void move_player(void);
+int has_wall_at(float x, float y);
+
+
+void cast_rays(void);
+void cast_one_ray(float ray_angle, int strip_id);
+void		render_ray(int column_id);
+void	draw_wall(t_wall *wall, int column_id);
+
+static int	choice_of_texture();
+void find_smallest_distance();
+void	the_smallest_of_the_distances_utile(float vert_hit_distance, float horz_hit_distance);
+float	distance_between_points(float x1, float y1, float x2, float y2);
+void	init_ray();
+void find_vert_intercept();
+void	next_vert_intercept(float next_vert_touch_y, float next_vert_touch_x);
+void find_horz_intercept();
+static void	next_horz_intercept(float next_x, float next_y);
+void find_where_ray_face();
+float	normalize_angle(float angle);
+
+void			bmp_exporter(char *file_name);
+void		write_file(int fd, int imagesize);
+void		write_header(int fd, t_bmp_file info_bmp_file);
+void		create_header(t_bmp_file *info_bmp_file);
+int		create_file(char *file_name);
+
+void			put_sprite(void);
+void	ft_getstart(t_sprite *sprite, float sprite_size, float transformy);
+void	ft_drawsprite(t_sprite *sprite, float transformy, float sprite_size);
+void	ft_puttexture(t_sprite *sprite, int x, int y, float sprite_size);
+int		ft_spritevisible(int id, float sprite_size);
+float	ft_calculangle(t_player *player, float x, float y);
+void			ft_spritedistance(void);
+void	ft_sortsprite();
+static void		ft_switch(t_sprite *sprite, int i, int j);
+static void		ft_zero(void);
+float	ft_gettransformy(t_sprite *sprite, t_player *player, int id);
+
+
 
 #endif

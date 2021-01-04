@@ -16,6 +16,7 @@ void     get_player_position(t_info *info, int row, int col)
                 info->player_start_x = i;
                 info->player_start_y = j;
                 info->player_start_angle = g_grid_array[i][j];
+                info->player_position = g_grid_array[i][j];
             }
             j++;
         }

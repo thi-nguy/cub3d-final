@@ -43,6 +43,9 @@ SRC = 	./src/main.c\
 		./src/game_loop.c\
 		./src/draw_floor_ceiling.c\
 		./src/draw_mini_map.c\
+		./src/move_player.c\
+		./src/cast_ray.c\
+		./src/bmp_export.c\
 
 
 OBJ = $(SRC:.c=.o)

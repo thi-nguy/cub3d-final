@@ -44,7 +44,6 @@ void init_info(t_info* info)
 
 void  init_player(t_info *info)
 {
-   // player.radius = 4;
    player.turnDirection = 0;
    player.walkDirection = 0;
    player.walkSpeed = 1;
@@ -55,6 +54,7 @@ void  init_player(t_info *info)
    player.rotaion_line_length = 20;
    player.width = 5;
    player.height = 5;
+   player.position = info->player_position;
 }
 
 int			init_window(t_info *info)

@@ -9,10 +9,10 @@ void	draw_grid(int x, int y, int x1, int y1, int tileColor)
 {
 	int tmp_y;
 
-	while (x < x1)
+	while (x <= x1)
 	{
 		tmp_y = y;
-		while (tmp_y < y1)
+		while (tmp_y <= y1)
 		{
 			my_mlx_put_pixel(x, tmp_y, tileColor);
 			tmp_y++;

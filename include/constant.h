@@ -41,7 +41,7 @@
 #define ERROR 0
 #define VALID_ERROR -1
 #define WALL_ERROR -10000
-#define SIZE_MINI_MAP 0.5
+#define SIZE_MINI_MAP 0.1
 
 # define ESC 65307
 # define KEY_W				119
@@ -50,5 +50,7 @@
 # define KEY_D				100
 # define KEY_LEFT			65361
 # define KEY_RIGHT			65363
+
+# define MAX_VALUE 2147483647
 
 #endif
