@@ -1,71 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/05 18:33:41 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/05 18:45:45 by thi-nguy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
-typedef struct s_info
+typedef struct		s_info
 {
-    t_list* head_llist;
-    int screenshoot;
-    int fd;
-	int map_row;
-	int map_col;
-	int player_start_x;
-	int player_start_y;
-	int player_start_angle;
-	char player_position;
-} t_info;
+	t_list*			head_llist;
+	int				screenshoot;
+	int				fd;
+	int				map_row;
+	int				map_col;
+	int				player_start_x;
+	int				player_start_y;
+	int				player_start_angle;
+	char			player_position;
+}					t_info;
 
-typedef struct s_window
+typedef struct		s_window
 {
-	void *mlx_ptr;
-	int width;
-	int height;
+	void			*mlx_ptr;
+	int				width;
+	int				height;
+}					t_window;
 
-} t_window;
-
-typedef struct s_wall_texture
+typedef struct		s_wall_texture
 {
-	char *path;
-	void *mlx_ptr;
-	int *data_addr;
-	int width;
-	int height;
+	char			*path;
+	void			*mlx_ptr;
+	int				*data_addr;
+	int				width;
+	int				height;
 	int				bpp;
 	int				endian;
 	int				line_length;
-	
-}	t_wall_texture;
+}					t_wall_texture;
 
-
-
-typedef struct s_player
+typedef struct		s_player
 {
-	float x;
-	float y;
-	float width;// width, height of the rectangle player
-	float height;
-	float rotaion_line_length; //length of rotation line
-	int		turnDirection; // -1 for left, +1 for right
-	int		walkDirection; // -1 for backward, +1 forward
-	float	rotationAngle;
-	float	walkSpeed; // how fast going front back
-	float	turnSpeed; //Moi lan an nut la cong them bao nhieu angle? how fast in angle per second we change per frame, here is 3 degree/frame
-	char position;// int		radius;
+	float			x;
+	float			y;
+	float			width;
+	float			height;
+	float			rotaion_line_length;
+	int				turnDirection;
+	int				walkDirection;
+	float			rotationAngle;
+	float			walkSpeed;
+	float			turnSpeed;
+	char			position;
 	int				translation;
 	float			angle;
-}	t_player;
+}					t_player;
 
 typedef struct		s_sprite
 {
 	int				nb_sprite;
 	char			*path;
 	void			*mlx_ptr;
-	int			*data_addr;
+	int				data_addr;
 	int				bpp;
 	int				endian;
 	int				line_length;
 	int				width;
 	int				height;
-
 	float			*x;
 	float			*y;
 	float			*distance;
@@ -79,7 +86,6 @@ typedef struct		s_sprite
 	float			plany;
 	float			planx;
 	float			angle;
-	// char			*path;
 	int				spritescreenx;
 }					t_sprite;
 
@@ -90,41 +96,34 @@ typedef struct		s_image
 	int				bpp;
 	int				endian;
 	int				line_length;
-	// int				width;
-	// int				height;
 }					t_image;
 
-typedef struct s_ray
+typedef struct		s_ray
 {
-	float ray_angle;
-	float wall_hit_x;
-	float wall_hit_y;
-	int wall_hit_vertical;
-	float distance;
-	int is_ray_facing_up;
-	int is_ray_facing_down;
-	int is_ray_facing_left;
-	int is_ray_facing_right;
-	int wall_hit_content;
-
-	float y_intercept;
-	float x_intercept;
-	float x_step;
-	float y_step;
-
+	float			ray_angle;
+	float			wall_hit_x;
+	float			wall_hit_y;
+	int				wall_hit_vertical;
+	float			distance;
+	int				is_ray_facing_up;
+	int				is_ray_facing_down;
+	int				is_ray_facing_left;
+	int				is_ray_facing_right;
+	int				wall_hit_content;
+	float			y_intercept;
+	float			x_intercept;
+	float			x_step;
+	float			y_step;
 	float			horz_wall_hit_y;
 	float			horz_wall_hit_x;
 	int				found_horz_wall_hit;
-	float x_to_check;
-	float y_to_check;
-
+	float			x_to_check;
+	float			y_to_check;
 	float			vert_wall_hit_y;
 	float			vert_wall_hit_x;
 	int				found_vert_wall_hit;
-
-	float was_hit_vertical;
-
-} t_ray;
+	float			was_hit_vertical;
+}					t_ray;
 
 typedef struct		s_wall
 {
@@ -134,7 +133,6 @@ typedef struct		s_wall
 	int				wall_top;
 	int				wall_bottom;
 }					t_wall;
-
 
 typedef struct		s_bmp_file
 {
@@ -154,6 +152,5 @@ typedef struct		s_bmp_file
 	unsigned int	total_colors;
 	unsigned int	important_colors;
 }					t_bmp_file;
-
 
 #endif

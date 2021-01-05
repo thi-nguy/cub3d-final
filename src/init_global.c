@@ -8,10 +8,10 @@ void init_global(void)
    g_floor_color = 0;
    g_count_player = 0;
    g_sprite.path = NULL;
-   g_WE_path = NULL;
-   g_EA_path = NULL;
-   g_SO_path = NULL;
-   g_NO_path = NULL;
+   g_we_path = NULL;
+   g_ea_path = NULL;
+   g_so_path = NULL;
+   g_no_path = NULL;
    g_grid_array = NULL;
    
 }

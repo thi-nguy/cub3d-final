@@ -5,7 +5,7 @@ void	my_mlx_put_pixel(int x, int y, int color)
 	g_image.data_addr[x * g_window.width + y] = color;
 }
 
-void	draw_grid(int x, int y, int x1, int y1, int tileColor)
+void	draw_grid(int x, int y, int x1, int y1, int tilecolor)
 {
 	int tmp_y;
 

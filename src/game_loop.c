@@ -36,7 +36,7 @@ float	ft_gettransformy(t_sprite *sprite, t_player *player, int id)
 }
 
 
-static void		ft_zero(void)
+void		ft_zero(void)
 {
 	g_sprite.drawstartx = 0;
 	g_sprite.drawendx = 0;
@@ -45,7 +45,7 @@ static void		ft_zero(void)
 	g_sprite.spritescreenx = 0;
 }
 
-static void		ft_switch(t_sprite *sprite, int i, int j)
+void		ft_switch(t_sprite *sprite, int i, int j)
 {
 	float		temp_dist;
 	float		temp_y;

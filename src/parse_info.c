@@ -95,7 +95,7 @@ int parse_sprite_path(t_list** lst)
 }
 
 
-int parse_NO_path(t_list** lst)
+int parse_no_path(t_list** lst)
 {
     t_list* node;
     char** line;
@@ -114,13 +114,13 @@ int parse_NO_path(t_list** lst)
             free_array(line, 2);
             exit(ERROR);
         }
-    g_NO_path = ft_strdup(line[1]);
+    g_no_path = ft_strdup(line[1]);
 
     free_array(line, 2);
     return (SUCCESS);
 }
 
-int parse_SO_path(t_list** lst)
+int parse_so_path(t_list** lst)
 {
     t_list* node;
     char** line;
@@ -144,7 +144,7 @@ int parse_SO_path(t_list** lst)
     return (SUCCESS);
 }
 
-int parse_WE_path(t_list** lst)
+int parse_we_path(t_list** lst)
 {
     t_list* node;
     char** line;
@@ -168,7 +168,7 @@ int parse_WE_path(t_list** lst)
     return (SUCCESS);
 }
 
-int parse_EA_path(t_list** lst)
+int parse_ea_path(t_list** lst)
 {
     t_list* node;
     char** line;
@@ -194,10 +194,10 @@ int parse_EA_path(t_list** lst)
 
 void    put_wall_texture_into_array(void)
 {
-    g_texture[0].path = ft_strdup(g_NO_path);
-    g_texture[1].path = ft_strdup(g_SO_path);
-    g_texture[2].path = ft_strdup(g_WE_path);
-    g_texture[3].path = ft_strdup(g_EA_path);
+    g_texture[0].path = ft_strdup(g_no_path);
+    g_texture[1].path = ft_strdup(g_so_path);
+    g_texture[2].path = ft_strdup(g_we_path);
+    g_texture[3].path = ft_strdup(g_ea_path);
 }
 
 int parse_info(t_info* info)
@@ -210,13 +210,13 @@ int parse_info(t_info* info)
         return(free_memory(info, ERROR));
     if (parse_sprite_path(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
-    if (parse_NO_path(&info->head_llist) == ERROR)
+    if (parse_no_path(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
-    if (parse_SO_path(&info->head_llist) == ERROR)
+    if (parse_so_path(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
-    if (parse_WE_path(&info->head_llist) == ERROR)
+    if (parse_we_path(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
-    if (parse_EA_path(&info->head_llist) == ERROR)
+    if (parse_ea_path(&info->head_llist) == ERROR)
         return(free_memory(info, ERROR));
     
     return(SUCCESS);
