@@ -2,8 +2,8 @@
 
 int		close_window(int key_code, t_info *info)
 {
-	(void)key_code;
    exit(free_memory(info, SUCCESS));
+	(void)key_code;
 }
 
 int		key_pressed(int key_code, t_info *info)
@@ -14,13 +14,20 @@ int		key_pressed(int key_code, t_info *info)
 	 	player.walkDirection = +1;
 	else if (key_code == KEY_S)
 	   player.walkDirection = -1;
-	else if (key_code == KEY_D)
+	else if (key_code == KEY_D || key_code == KEY_RIGHT)
 	 	player.turnDirection = +1;
-	else if (key_code == KEY_A)
+	else if (key_code == KEY_A || key_code == KEY_LEFT)
 	 	player.turnDirection = -1;
-   // else if (key_code == LEFT)
-
-   // else if (key_code == RIGHT)
+   else if (key_code == TRANSLATION_RIGHT)
+	{
+		player.translation = 1;
+		player.walkDirection = +1;
+	}
+	else if (key_code == TRANSLATION_LEFT)
+	{
+		player.translation = -1;
+		player.walkDirection = -1;
+	}
 
 	return (0);
 }
@@ -32,13 +39,15 @@ int		key_release(int key_code)
 	 	player.walkDirection = 0;
 	else if (key_code == KEY_S)
 	   player.walkDirection = 0;
-	else if (key_code == KEY_A)
+	else if (key_code == KEY_A || key_code == KEY_LEFT)
 	 	player.turnDirection = 0;
-	else if (key_code == KEY_D)
+	else if (key_code == KEY_D || key_code == KEY_RIGHT)
 	 	player.turnDirection = 0;
-   // else if (key_code == LEFT)
-
-   // else if (key_code == RIGHT)
+   else if (key_code == TRANSLATION_RIGHT || key_code == TRANSLATION_LEFT)
+	{
+		player.translation = 0;
+		player.walkDirection = 0;
+	}
 
 	return (0);
 }
@@ -49,9 +58,9 @@ void	game_loop(t_info *info)
 	int	key_code;
 
 	key_code = 0;
-   mlx_hook(g_window.mlx_ptr, 17, 1L << 17, &close_window, &info);
-	mlx_hook(g_window.mlx_ptr, 2, (1L << 0), &key_pressed, &info);
-	mlx_hook(g_window.mlx_ptr, 3, (1L << 1), &key_release, &key_code);
+   mlx_hook(g_window.mlx_ptr, 17, (1L<<17), &close_window, &info);
+	mlx_hook(g_window.mlx_ptr, 2, (1L<<0), &key_pressed, &info);
+	mlx_hook(g_window.mlx_ptr, 3, (1L<<1), &key_release, &key_code);
 	mlx_loop_hook(g_mlx, &create_one_frame, &info);
 	mlx_loop(g_mlx);
 }
@@ -79,8 +88,6 @@ int     main(int ac, char** av)
    init_player(&info);
    if (init_sprite() == ERROR)
       return (free_memory(&info, ERROR));
-   
-   
    if(info.screenshoot == 1)
       create_one_frame(&info);
    else

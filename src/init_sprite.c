@@ -84,7 +84,7 @@ int		load_ptr_and_data_sprite(void)
 		ft_putstr_fd("Error\nCannot get pointer to file of sprite's texture\n", 1);
 		return (ERROR);
 	}
-	g_sprite.data_addr = mlx_get_data_addr(g_sprite.mlx_ptr, &g_sprite.bpp, &g_sprite.line_length, &g_sprite.endian); //tai sao chuyen (int*) o day?
+	g_sprite.data_addr = (int *)mlx_get_data_addr(g_sprite.mlx_ptr, &g_sprite.bpp, &g_sprite.line_length, &g_sprite.endian); //tai sao chuyen (int*) o day?
 	if (!g_sprite.data_addr)
 	{
 		ft_putstr_fd("Error\nCannot get data address of sprite's texture\n", 1);

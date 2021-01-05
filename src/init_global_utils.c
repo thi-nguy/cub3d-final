@@ -3,12 +3,8 @@
 int  load_wall_texture_ptr(void)
 {
    int i;
-   int bpp;
-	int size_line;
-	int endian;
 
    i = 0;
-
    while (i < 4)
    {
       g_texture[i].mlx_ptr = mlx_xpm_file_to_image(g_mlx, g_texture[i].path, &g_texture[i].width, &g_texture[i].height);
@@ -17,7 +13,7 @@ int  load_wall_texture_ptr(void)
          ft_putstr_fd("Error\nCan not get xpm file.\n", 1);
          return (ERROR);
       }
-      g_texture[i].data_addr = mlx_get_data_addr(g_texture[i].mlx_ptr, &g_texture[i].bpp, &g_texture[i].line_length, &g_texture[i].endian);
+      g_texture[i].data_addr =(int *)mlx_get_data_addr(g_texture[i].mlx_ptr, &g_texture[i].bpp, &g_texture[i].line_length, &g_texture[i].endian);
       if (!g_texture[i].data_addr)
       {
          printf("At position i = %d\n", i);
@@ -33,6 +29,7 @@ void  get_global(t_info *info)
 {
    g_map_row = info->map_row;
    g_map_col = info->map_col;
+   g_texture[0].mlx_ptr = 0;
    g_wall_strip_width = 1;
    g_tile_size = g_window.width / g_map_col;
    g_num_rays = g_window.width / g_wall_strip_width;

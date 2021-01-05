@@ -36,6 +36,8 @@
 // #define KEY_DOWN 125
 // #define KEY_LEFT 123
 // #define KEY_RIGHT 124
+# define TRANSLATION_RIGHT 100
+# define TRANSLATION_LEFT 97
 
 #define SUCCESS 1
 #define ERROR 0

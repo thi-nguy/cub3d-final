@@ -24,10 +24,9 @@ typedef struct s_window
 
 typedef struct s_wall_texture
 {
-	char *id;
 	char *path;
 	void *mlx_ptr;
-	char *data_addr;
+	int *data_addr;
 	int width;
 	int height;
 	int				bpp;
@@ -51,6 +50,8 @@ typedef struct s_player
 	float	walkSpeed; // how fast going front back
 	float	turnSpeed; //Moi lan an nut la cong them bao nhieu angle? how fast in angle per second we change per frame, here is 3 degree/frame
 	char position;// int		radius;
+	int				translation;
+	float			angle;
 }	t_player;
 
 typedef struct		s_sprite
@@ -58,7 +59,7 @@ typedef struct		s_sprite
 	int				nb_sprite;
 	char			*path;
 	void			*mlx_ptr;
-	char			*data_addr;
+	int			*data_addr;
 	int				bpp;
 	int				endian;
 	int				line_length;
@@ -121,7 +122,7 @@ typedef struct s_ray
 	float			vert_wall_hit_x;
 	int				found_vert_wall_hit;
 
-	int was_hit_vertical;
+	float was_hit_vertical;
 
 } t_ray;
 

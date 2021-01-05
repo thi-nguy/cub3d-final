@@ -194,13 +194,9 @@ int parse_EA_path(t_list** lst)
 
 void    put_wall_texture_into_array(void)
 {
-    g_texture[0].path = ft_strdup(g_WE_path);
-    g_texture[0].id = ft_strdup("WE");
-    g_texture[1].id = ft_strdup("NO");
-    g_texture[1].path = ft_strdup(g_NO_path);
-    g_texture[2].id = ft_strdup("SO");
-    g_texture[2].path = ft_strdup(g_SO_path);
-    g_texture[3].id = ft_strdup("EA");
+    g_texture[0].path = ft_strdup(g_NO_path);
+    g_texture[1].path = ft_strdup(g_SO_path);
+    g_texture[2].path = ft_strdup(g_WE_path);
     g_texture[3].path = ft_strdup(g_EA_path);
 }
 

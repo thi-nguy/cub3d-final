@@ -23,7 +23,7 @@ void find_where_ray_face()
     	ray.is_ray_facing_left = 1;
 }
 
-static void	next_horz_intercept(float next_x, float next_y)
+void	next_horz_intercept(float next_y, float next_x)
 {
 	float	tmp;
 
@@ -44,27 +44,29 @@ static void	next_horz_intercept(float next_x, float next_y)
 	}
 }
 
-void find_horz_intercept()
+void find_horz_intercept(t_ray *ray, t_player *player)
 {
     float	next_horz_touch_y;
 	float	next_horz_touch_x;
     
     //get point of Oy intercept.
-    ray.y_intercept = floor(player.y / g_tile_size) * g_tile_size;
-    ray.y_intercept += ray.is_ray_facing_down ? g_tile_size : 0;
-    ray.x_intercept = player.x + ((ray.y_intercept - player.y) / tan(ray.ray_angle));
-
-    ray.y_step = g_tile_size;
-    ray.y_step *= ray.is_ray_facing_up ? -1 : 1;
-
-    ray.x_step = g_tile_size / tan(ray.ray_angle);
-    ray.x_step *= (ray.is_ray_facing_left && ray.x_step > 0) ? -1 : 1;
-    ray.x_step *= (ray.is_ray_facing_right && ray.x_step < 0) ? -1 : 1;
-
-    next_horz_touch_x = ray.x_intercept;
-    next_horz_touch_y = ray.y_intercept;
-    next_horz_intercept(next_horz_touch_y, next_horz_touch_x);
-
+    ray->y_intercept = floor(player->y / g_tile_size) * g_tile_size;
+	if (ray->is_ray_facing_down)
+		ray->y_intercept += g_tile_size;
+	ray->x_intercept = player->x + ((ray->y_intercept - player->y) /
+	tan(ray->ray_angle));
+	ray->y_step = g_tile_size;
+	if (ray->is_ray_facing_up)
+		ray->y_step *= -1;
+	ray->x_step = g_tile_size / tan(ray->ray_angle);
+	if (ray->is_ray_facing_left && ray->x_step > 0)
+		ray->x_step *= -1;
+	if (ray->is_ray_facing_right && ray->x_step < 0)
+		ray->x_step *= -1;
+	next_horz_touch_x = ray->x_intercept;
+	next_horz_touch_y = ray->y_intercept;
+	next_horz_intercept(next_horz_touch_y, next_horz_touch_x);
+   
 }
 
 void	next_vert_intercept(float next_vert_touch_y, float next_vert_touch_x)
@@ -89,26 +91,27 @@ void	next_vert_intercept(float next_vert_touch_y, float next_vert_touch_x)
 	}
 }
 
-void find_vert_intercept()
+void		find_vert_intercept(t_ray *ray, t_player *player)
 {     
-    float	next_vert_touch_y;
-	float	next_vert_touch_x;
-    
-    //get point of Oy intercept.
-    ray.x_intercept = floor(player.x / g_tile_size) * g_tile_size;
-    ray.x_intercept += ray.is_ray_facing_right ? g_tile_size : 0;
-    ray.y_intercept = player.y + ((ray.x_intercept - player.x) / tan(ray.ray_angle));
+    float	next_vert_touch_x;
+	float	next_vert_touch_y;
 
-    ray.x_step = g_tile_size;
-    ray.x_step *= ray.is_ray_facing_left ? -1 : 1;
-
-    ray.y_step = g_tile_size * tan(ray.ray_angle);
-    ray.y_step *= (ray.is_ray_facing_up && ray.y_step > 0) ? -1 : 1;
-    ray.y_step *= (ray.is_ray_facing_down && ray.y_step < 0) ? -1 : 1;
-
-    next_vert_touch_x = ray.x_intercept;
-    next_vert_touch_y = ray.y_intercept;
-    next_vert_intercept(next_vert_touch_y, next_vert_touch_x);
+	ray->x_intercept = floor(player->x / g_tile_size) * g_tile_size;
+	if (ray->is_ray_facing_right)
+		ray->x_intercept += g_tile_size;
+	ray->y_intercept = player->y + (ray->x_intercept - player->x) *
+	tan(ray->ray_angle);
+	ray->x_step = g_tile_size;
+	if (ray->is_ray_facing_left)
+		ray->x_step *= -1;
+	ray->y_step = g_tile_size * tan(ray->ray_angle);
+	if (ray->is_ray_facing_up && ray->y_step > 0)
+		ray->y_step *= -1;
+	if (ray->is_ray_facing_down && ray->y_step < 0)
+		ray->y_step *= -1;
+	next_vert_touch_x = ray->x_intercept;
+	next_vert_touch_y = ray->y_intercept;
+	next_vert_intercept(next_vert_touch_y, next_vert_touch_x);
 
 }
 
@@ -117,6 +120,7 @@ void	init_ray()
 {
 	ray.wall_hit_x = 0;
 	ray.wall_hit_y = 0;
+	ray.was_hit_vertical = 0;
 	ray.wall_hit_vertical = 0;
 	ray.x_step = 0;
 	ray.x_intercept = 0;
@@ -181,7 +185,7 @@ void find_smallest_distance()
 
 }
 
-static int	choice_of_texture()
+int	choice_of_texture(void)
 {
 	if (ray.is_ray_facing_up && !ray.was_hit_vertical)
 		return (0);
@@ -192,7 +196,7 @@ static int	choice_of_texture()
 	if (ray.is_ray_facing_right && ray.was_hit_vertical)
 		return (3);
 	(void)ray;
-	return (0);
+	// return (0);
 }
 
 
@@ -248,8 +252,8 @@ void cast_one_ray(float ray_angle, int strip_id)
 {
     ray.ray_angle = normalize_angle(ray_angle);
     find_where_ray_face();
-    find_horz_intercept();
-    find_vert_intercept();
+	find_horz_intercept(&ray, &player);
+    find_vert_intercept(&ray, &player);
     find_smallest_distance();
     render_ray(strip_id);
 }

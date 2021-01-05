@@ -48,8 +48,8 @@ void  init_player(t_info *info)
    player.walkDirection = 0;
    player.walkSpeed = 1;
    player.turnSpeed = 3 * (M_PI / 180);
-   player.x = g_tile_size * info->player_start_x;
-   player.y = g_tile_size * info->player_start_y;
+   player.x = g_tile_size * info->player_start_x + g_tile_size / 2;
+   player.y = g_tile_size * info->player_start_y + g_tile_size / 2;
    player.rotationAngle = get_rotation_angle(info->player_start_angle);
    player.rotaion_line_length = 20;
    player.width = 5;

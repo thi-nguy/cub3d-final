@@ -245,5 +245,4 @@ int				create_one_frame(t_info *info)
         mlx_destroy_image(g_mlx, g_image.mlx_ptr);
         g_image.mlx_ptr = 0;
     }
-    
 }
