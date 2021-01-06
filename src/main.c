@@ -23,22 +23,22 @@ int		key_pressed(int key_code, t_info *info)
 	if (key_code == ESC)
 		exit(SUCCESS);
 	else if (key_code == KEY_W)
-		player.walk_direction = +1;
+		g_player.walk_direction = +1;
 	else if (key_code == KEY_S)
-		player.walk_direction = -1;
+		g_player.walk_direction = -1;
 	else if (key_code == KEY_D || key_code == KEY_RIGHT)
-		player.turn_direction = +1;
+		g_player.turn_direction = +1;
 	else if (key_code == KEY_A || key_code == KEY_LEFT)
-		player.turn_direction = -1;
+		g_player.turn_direction = -1;
 	else if (key_code == TRANSLATION_RIGHT)
 	{
-		player.translation = 1;
-		player.walk_direction = +1;
+		g_player.translation = 1;
+		g_player.walk_direction = +1;
 	}
 	else if (key_code == TRANSLATION_LEFT)
 	{
-		player.translation = -1;
-		player.walk_direction = -1;
+		g_player.translation = -1;
+		g_player.walk_direction = -1;
 	}
 	return (0);
 }
@@ -46,17 +46,17 @@ int		key_pressed(int key_code, t_info *info)
 int		key_release(int key_code)
 {
 	if (key_code == KEY_W)
-		player.walk_direction = 0;
+		g_player.walk_direction = 0;
 	else if (key_code == KEY_S)
-		player.walk_direction = 0;
+		g_player.walk_direction = 0;
 	else if (key_code == KEY_A || key_code == KEY_LEFT)
-		player.turn_direction = 0;
+		g_player.turn_direction = 0;
 	else if (key_code == KEY_D || key_code == KEY_RIGHT)
-		player.turn_direction = 0;
+		g_player.turn_direction = 0;
 	else if (key_code == TRANSLATION_RIGHT || key_code == TRANSLATION_LEFT)
 	{
-		player.translation = 0;
-		player.walk_direction = 0;
+		g_player.translation = 0;
+		g_player.walk_direction = 0;
 	}
 	return (0);
 }
