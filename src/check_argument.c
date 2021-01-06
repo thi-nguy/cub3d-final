@@ -25,7 +25,7 @@ int		check_format(char *av, char *format)
 		return (ft_strcmp(av + av_l - format_l, format));
 }
 
-void	check_extension(char **av)
+void	check_extension(char **av, char *extension_name)
 {
 	if (check_format(av[1], &extension_name) == ERROR)
 	{

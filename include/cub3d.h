@@ -29,6 +29,7 @@
 
 void		init_info(t_info *info);
 void		check_argument(int ac, char **av, int *save);
+void		check_extension(char **av, char *extension_name);
 int			check_format(char *av, char *format);
 void		get_fd(char *arg, t_info *info);
 int			parse(t_info *info);
