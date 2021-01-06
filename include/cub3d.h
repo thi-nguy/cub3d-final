@@ -112,10 +112,9 @@ void		the_smallest_of_the_distances_utile(float vert_hit_distance,
 float		distance_between_points(float x1, float y1, float x2, float y2);
 void		init_ray();
 void		find_vert_intercept(t_ray *ray, t_player *player);
-void		next_vert_intercept(float next_vert_touch_y,
-			float next_vert_touch_x);
+void		next_vert_intercept(float next_y, float next_x);
+void		next_horz_intercept(float next_y, float next_x);
 void		find_horz_intercept(t_ray *ray, t_player *player);
-void		next_horz_intercept(float next_x, float next_y);
 void		find_where_ray_face();
 float		normalize_angle(float angle);
 void		bmp_exporter(char *file_name);

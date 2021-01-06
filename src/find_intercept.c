@@ -57,25 +57,25 @@ void	find_horz_intercept(t_ray *ray, t_player *player)
 	next_horz_intercept(next_horz_touch_y, next_horz_touch_x);
 }
 
-void	next_vert_intercept(float next_vert_touch_y, float next_vert_touch_x)
+void	next_vert_intercept(float next_y, float next_x)
 {
 	float	tmp;
 
-	while (next_vert_touch_x >= 0 && next_vert_touch_x <= g_window.width
-			&& next_vert_touch_y >= 0 && next_vert_touch_y <= g_window.height)
+	while (next_x >= 0 && next_x <= (g_map_col * g_tile_size)
+			&& next_y >= 0 && next_y <= (g_map_row * g_tile_size))
 	{
 		tmp = 0;
 		if (g_ray.is_ray_facing_left)
 			tmp = 1;
-		if (has_wall_at(next_vert_touch_y, next_vert_touch_x - tmp))
+		if (has_wall_at(next_y, next_x - tmp))
 		{
 			g_ray.found_vert_wall_hit = 1;
-			g_ray.vert_wall_hit_x = next_vert_touch_x;
-			g_ray.vert_wall_hit_y = next_vert_touch_y;
+			g_ray.vert_wall_hit_x = next_x;
+			g_ray.vert_wall_hit_y = next_y;
 			return ;
 		}
-		next_vert_touch_x += g_ray.x_step;
-		next_vert_touch_y += g_ray.y_step;
+		next_x += g_ray.x_step;
+		next_y += g_ray.y_step;
 	}
 }
 
