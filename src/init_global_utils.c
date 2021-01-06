@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 10:58:06 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/06 11:00:58 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/06 15:32:07 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		load_wall_texture_ptr(void)
 		if (!g_texture[i].data_addr)
 		{
 			printf("At position i = %d\n", i);
-			ft_putstr_fd("Error\nCan not get data from wall texture's path.\n", 1);
+			ft_putstr_fd("Error\nCan't get data from texture path.\n", 1);
 			return (ERROR);
 		}
 		i++;
@@ -42,8 +42,6 @@ int		load_wall_texture_ptr(void)
 
 void	get_global(t_info *info)
 {
-	g_map_row = info->map_row;
-	g_map_col = info->map_col;
 	g_texture[0].mlx_ptr = 0;
 	g_wall_strip_width = 1;
 	g_tile_size = g_window.width / g_map_col;

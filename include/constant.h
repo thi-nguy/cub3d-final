@@ -27,5 +27,9 @@
 # define KEY_LEFT			65361
 # define KEY_RIGHT			65363
 # define MAX_VALUE 2147483647
+# define WALL_COLOR 0Xaa5555
+# define SPACE_COLOR 0Xc1e2f1
+# define SPRITE_COLOR 0X5175bc
+# define PLAYER_COLOR 0X2345bc
 
 #endif

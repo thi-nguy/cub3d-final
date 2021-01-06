@@ -6,13 +6,13 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:11:49 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/06 11:12:47 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/06 15:28:20 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void			get_position_sprite(t_sprite *sprite, int **map)
+void	get_position_sprite(t_sprite *sprite, int **map)
 {
 	int			i;
 	int			j;
@@ -38,7 +38,7 @@ void			get_position_sprite(t_sprite *sprite, int **map)
 	}
 }
 
-void			init_vecteur_north(t_sprite *sprite)
+void	init_vecteur_north(t_sprite *sprite)
 {
 	sprite->dirx = 0;
 	sprite->diry = -1;
@@ -46,7 +46,7 @@ void			init_vecteur_north(t_sprite *sprite)
 	sprite->plany = 0;
 }
 
-void		init_vecteur(t_sprite *sprite, char player_position)
+void	init_vecteur(t_sprite *sprite, char player_position)
 {
 	if (player_position == 'E')
 	{

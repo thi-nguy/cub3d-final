@@ -12,19 +12,19 @@
 
 #include "cub3d.h"
 
-int	flood_fill(int **map_copy, int map_row, int map_col, int row, int col)
+int	flood_fill(int **map_copy, int row, int col)
 {
-	if (row < 0 || row >= map_row || col < 0 || col >= map_col)
+	if (row < 0 || row >= g_map_row || col < 0 || col >= g_map_col)
 		return (1);
 	else if (map_copy[row][col] == 1)
 		return (0);
 	else if (map_copy[row][col] == 43)
 		return (WALL_ERROR);
 	map_copy[row][col] = 1;
-	return (flood_fill(map_copy, map_row, map_col, row - 1, col) +
-			flood_fill(map_copy, map_row, map_col, row + 1, col) +
-			flood_fill(map_copy, map_row, map_col, row, col - 1) +
-			flood_fill(map_copy, map_row, map_col, row, col + 1));
+	return (flood_fill(map_copy, row - 1, col) +
+			flood_fill(map_copy, row + 1, col) +
+			flood_fill(map_copy, row, col - 1) +
+			flood_fill(map_copy, row, col + 1));
 }
 
 int	check_if_map_close(t_info *info)
@@ -34,8 +34,7 @@ int	check_if_map_close(t_info *info)
 
 	tmp = copy_map_grid(info->map_row, info->map_col);
 	borken_wall = 0;
-	borken_wall = flood_fill(tmp, info->map_row, info->map_col,
-			info->player_start_x, info->player_start_y);
+	borken_wall = flood_fill(tmp, info->player_start_x, info->player_start_y);
 	free_array((char**)tmp, info->map_row);
 	tmp = NULL;
 	if (borken_wall > 0)

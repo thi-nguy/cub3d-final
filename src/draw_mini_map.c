@@ -22,7 +22,7 @@ void	draw_rotation_line(void)
 	draw_line(y_minimap, x_minimap);
 }
 
-void	draw_player(int color)
+void	draw_player(void)
 {
 	float x_minimap;
 	float y_minimap;
@@ -33,7 +33,7 @@ void	draw_player(int color)
 			g_player.width, color);
 }
 
-void	draw_sprite(int color)
+void	draw_sprite(void)
 {
 	int i;
 	int j;
@@ -56,13 +56,10 @@ void	draw_sprite(int color)
 	}
 }
 
-void	draw_map(int color_wall, int color_space)
+void	draw_map(int x, int y)
 {
 	int i;
 	int j;
-	int tile_color;
-	int x;
-	int y;
 	int tile_x;
 	int tile_y;
 
@@ -76,8 +73,10 @@ void	draw_map(int color_wall, int color_space)
 		{
 			x = j * g_tile_size * SIZE_MINI_MAP;
 			tile_x = x + g_tile_size * SIZE_MINI_MAP;
-			tile_color = (g_grid_array[i][j] != 1 ? color_space : color_wall);
-			draw_grid(y, x, tile_y, tile_x, tile_color);
+			if (g_grid_array[i][j] == 1)
+				draw_grid_wall(y, x, tile_y, tile_x);
+			else
+				draw_grid_space(y, x, tile_y, tile_x);
 			j++;
 		}
 		i++;
@@ -86,8 +85,13 @@ void	draw_map(int color_wall, int color_space)
 
 void	draw_mini_map(void)
 {
-	draw_map(0Xaa5555, 0Xc1e2f1);
-	draw_sprite(0X5175bc);
-	draw_player(0X2345bc);
+	int x0;
+	int y0;
+
+	x0 = 0;
+	y0 = 0;
+	draw_map(x0, y0);
+	draw_sprite();
+	draw_player();
 	draw_rotation_line();
 }

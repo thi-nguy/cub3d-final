@@ -84,6 +84,8 @@ int		parse_map(t_info *info)
 	if (get_row_column(&info->head_llist, &info->map_row,
 				&info->map_col) == ERROR)
 		return (free_memory(info, ERROR));
+	g_map_row = info->map_row;
+	g_map_col = info->map_col;
 	if (put_map_in_array(&info->head_llist, info->map_row,
 				info->map_col) == ERROR)
 		return (free_memory(info, ERROR));
