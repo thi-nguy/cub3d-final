@@ -16,8 +16,8 @@ void	next_horz_intercept(float next_y, float next_x)
 {
 	float	tmp;
 
-	while (next_x >= 0 && next_x <= (g_map_col * g_tile_size) && next_y >= 0 &&
-			next_y <= (g_map_row * g_tile_size))
+	while (next_x >= 0 && next_x <= (g_map_col * g_tile_size) &&
+			next_y >= 0 && next_y <= (g_map_row * g_tile_size))
 	{
 		tmp = 0;
 		if (g_ray.is_ray_facing_up)
@@ -69,9 +69,9 @@ void	next_vert_intercept(float next_y, float next_x)
 			tmp = 1;
 		if (has_wall_at(next_y, next_x - tmp))
 		{
-			g_ray.found_vert_wall_hit = 1;
 			g_ray.vert_wall_hit_x = next_x;
 			g_ray.vert_wall_hit_y = next_y;
+			g_ray.found_vert_wall_hit = 1;
 			return ;
 		}
 		next_x += g_ray.x_step;

@@ -27,7 +27,8 @@ int				has_wall_at(float y, float x)
 	int map_grid_index_x;
 	int map_grid_index_y;
 
-	if (x < 0 || x > g_window.width || y < 0 || y > g_window.height)
+	if (x < 0 || x > (g_map_col * g_tile_size)
+	|| y < 0 || y > (g_map_row * g_tile_size))
 		return (1);
 	map_grid_index_x = floor(x / g_tile_size);
 	map_grid_index_y = floor(y / g_tile_size);

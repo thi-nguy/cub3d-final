@@ -14,6 +14,11 @@
 
 int		close_window(int key_code, t_info *info)
 {
+	if (g_image.mlx_ptr)
+	{
+		mlx_destroy_image(g_mlx, g_image.mlx_ptr);
+		g_image.mlx_ptr = 0;
+	}
 	exit(free_memory(info, SUCCESS));
 	(void)key_code;
 }
