@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 10:07:34 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/06 10:33:59 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/06 16:11:12 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	draw_player(void)
 
 	x_minimap = g_player.x * SIZE_MINI_MAP;
 	y_minimap = g_player.y * SIZE_MINI_MAP;
-	draw_grid_player(y_minimap, x_minimap, y_minimap + g_player.height, x_minimap +
-			g_player.width);
+	draw_grid_player(y_minimap, x_minimap, y_minimap +
+			g_player.height, x_minimap + g_player.width);
 }
 
 void	draw_sprite(void)
