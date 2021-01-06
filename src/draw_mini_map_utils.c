@@ -65,7 +65,7 @@ void	draw_grid_player(int x, int y, int x1, int y1)
 	}
 }
 
-void	draw_grid_space(int x, int y, int x1, int y1)
+void	draw_grid_sprite(int x, int y, int x1, int y1)
 {
 	int tmp_y;
 
