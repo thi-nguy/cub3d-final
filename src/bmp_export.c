@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bmp_export.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/06 08:56:13 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 08:57:05 by thi-nguy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-
-int		create_file(char *file_name)
+int			create_file(char *file_name)
 {
 	int	fd;
 
@@ -80,8 +91,7 @@ void		write_file(int fd, int imagesize)
 	free(pixel_array);
 }
 
-
-void			bmp_exporter(char *file_name)
+void		bmp_exporter(char *file_name)
 {
 	t_bmp_file	info_bmp_file;
 	int			fd;

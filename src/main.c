@@ -11,22 +11,22 @@ int		key_pressed(int key_code, t_info *info)
 	if (key_code == ESC)
       exit(SUCCESS);
    else if (key_code == KEY_W)
-	 	player.walkDirection = +1;
+	 	player.walk_direction = +1;
 	else if (key_code == KEY_S)
-	   player.walkDirection = -1;
+	   player.walk_direction = -1;
 	else if (key_code == KEY_D || key_code == KEY_RIGHT)
-	 	player.turnDirection = +1;
+	 	player.turn_direction = +1;
 	else if (key_code == KEY_A || key_code == KEY_LEFT)
-	 	player.turnDirection = -1;
+	 	player.turn_direction = -1;
    else if (key_code == TRANSLATION_RIGHT)
 	{
 		player.translation = 1;
-		player.walkDirection = +1;
+		player.walk_direction = +1;
 	}
 	else if (key_code == TRANSLATION_LEFT)
 	{
 		player.translation = -1;
-		player.walkDirection = -1;
+		player.walk_direction = -1;
 	}
 
 	return (0);
@@ -36,17 +36,17 @@ int		key_pressed(int key_code, t_info *info)
 int		key_release(int key_code)
 {
    if (key_code == KEY_W)
-	 	player.walkDirection = 0;
+	 	player.walk_direction = 0;
 	else if (key_code == KEY_S)
-	   player.walkDirection = 0;
+	   player.walk_direction = 0;
 	else if (key_code == KEY_A || key_code == KEY_LEFT)
-	 	player.turnDirection = 0;
+	 	player.turn_direction = 0;
 	else if (key_code == KEY_D || key_code == KEY_RIGHT)
-	 	player.turnDirection = 0;
+	 	player.turn_direction = 0;
    else if (key_code == TRANSLATION_RIGHT || key_code == TRANSLATION_LEFT)
 	{
 		player.translation = 0;
-		player.walkDirection = 0;
+		player.walk_direction = 0;
 	}
 
 	return (0);
@@ -105,7 +105,7 @@ int     main(int ac, char** av)
    // printf("Player:\n");
    // // printf("radius:%i\n", player.radius);
    // printf("turnDirection:%i\n", player.turnDirection);
-   // printf("walkDirection:%i\n", player.walkDirection);
+   // printf("walk_direction:%i\n", player.walk_direction);
    // printf("walkSpeeds:%f\n", player.walkSpeed);
    // printf("turnSpeed:%f\n", player.turnSpeed);
    // printf("x:%f\n", player.x);

@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:35:37 by thi-nguy          #+#    #+#             */
-/*   Updated: 2020/02/11 13:03:55 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/06 08:53:14 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		get_next_line(int fd, char **line)
 	int				byte_read;
 	int				i;
 
-	if (!line || read(fd, buff, 0) < 0) // tại sao là 0? Vi chi doc xem co ok khong chua bat dau doc.
+	if (!line || read(fd, buff, 0) < 0)
 		return (-1);
 	if (rest && (((i = find_n(rest, '\n')) != -1)))
 		return (get_line(&rest, line, i));

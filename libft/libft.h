@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:23:39 by thi-nguy          #+#    #+#             */
-/*   Updated: 2020/01/09 15:59:09 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/06 08:53:33 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <pthread.h>
-
+# include <unistd.h>
+# include <string.h>
+# include <pthread.h>
 # include <ctype.h>
 # include <stddef.h>
 # include <limits.h>
@@ -72,12 +71,13 @@ t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
-// void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_lstiter(t_list *lst, int (*f)(const char *, ...));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 int					get_next_line(const int fd, char **line);
-int		ft_strcmp(char *s1, char *s2);
-int	ft_isspace(int c);
+int					ft_strcmp(char *s1, char *s2);
+int					ft_isspace(int c);
+int					ft_count_words(char const *s, char c);
+char				*ft_alloc_word(char const *s, char c);
 
 #endif

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_alloc_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/06 13:36:13 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/06 08:52:16 by thi-nguy         ###   ########.fr       */
+/*   Created: 2021/01/06 08:48:49 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 08:50:00 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+char			*ft_alloc_word(char const *s, char c)
 {
-	int i;
+	int		size;
+	char	*tab;
 
-	i = 0;
-	while (src[i])
+	size = 0;
+	tab = 0;
+	while (s[size] && s[size] != c)
+		size++;
+	if (!(tab = (char *)malloc(sizeof(char) * (size + 1))))
 	{
-		dst[i] = src[i];
-		i++;
+		free(tab);
+		tab = NULL;
+		return (NULL);
 	}
-	dst[i] = '\0';
-	return (dst);
+	if (ft_strlcpy(tab, s, size + 1) == 0)
+		return (NULL);
+	return (tab);
 }

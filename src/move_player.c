@@ -31,7 +31,7 @@ static void		update_position(t_player *player, float y,
 
 	olddirx = sprite->dirx;
 	oldplanx = sprite->planx;
-	vectangle = player->turnDirection * player->turnSpeed;
+	vectangle = player->turn_direction * player->turn_speed;
 	sprite->dirx = sprite->dirx * cos(vectangle) - sprite->diry *
 	sin(vectangle);
 	sprite->diry = olddirx * sin(vectangle) + sprite->diry * cos(vectangle);
@@ -52,15 +52,15 @@ void move_player(void)
     float new_player_y;
     int			player_orientation;
 
-	player_orientation = player_orientation_angle(player.rotationAngle);
-    player.rotationAngle += player.turnDirection * player.turnSpeed;
-    move_step = player.walkDirection * player.walkSpeed;
-    new_player_x = player.x + cos(player.rotationAngle) * move_step;
-    new_player_y = player.y + sin(player.rotationAngle) * move_step;
+	player_orientation = player_orientation_angle(player.rotation_angle);
+    player.rotation_angle += player.turn_direction * player.turn_speed;
+    move_step = player.walk_direction * player.walk_speed;
+    new_player_x = player.x + cos(player.rotation_angle) * move_step;
+    new_player_y = player.y + sin(player.rotation_angle) * move_step;
 
     // if (player.translation == -1 || player.translation == 1)
 	// {
-	// 	player.angle = (M_PI * 0.5) - player.rotationAngle;
+	// 	player.angle = (M_PI * 0.5) - player.rotation_angle;
 	// 	if (player_orientation == 1)
 	// 	{
 	// 		new_player_x = player.x - cos(player.angle) * move_step;

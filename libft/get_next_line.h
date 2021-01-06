@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:35:52 by thi-nguy          #+#    #+#             */
-/*   Updated: 2020/02/11 13:10:47 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/06 08:50:51 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-#define BUFFER_SIZE 10
+# define BUFFER_SIZE 10
 
-// char	*ft_strchr(const char *s, int c);
-// size_t	ft_strlen(const char *s);
-// char	*ft_strdup(const char *s1);
-// char	*ft_substr(char const *s, int start, int len);
 char	*ft_strcpy(char *dst, const char *src);
 char	*join_str(char *s1, char *s2);
 int		find_n(const char *str, int c);

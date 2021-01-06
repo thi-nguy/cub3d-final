@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/06 13:36:13 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/06 08:52:16 by thi-nguy         ###   ########.fr       */
+/*   Created: 2021/01/06 08:47:07 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 08:48:25 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int		ft_count_words(char const *s, char c)
 {
 	int i;
+	int words;
+	int hasword;
 
 	i = 0;
-	while (src[i])
-	{
-		dst[i] = src[i];
+	words = 0;
+	hasword = 0;
+	while (s[i] == c && s[i])
 		i++;
+	while (s[i])
+	{
+		if (s[i] != c && s[i])
+			hasword = 1;
+		if (s[i] == c)
+		{
+			while (s[i] == c && s[i])
+				i++;
+			if (s[i])
+				words++;
+		}
+		else
+			i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (words + hasword);
 }

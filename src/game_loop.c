@@ -1,19 +1,31 @@
-# include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/06 10:39:24 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 10:39:35 by thi-nguy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
 
 int init_image(void)
 {
-    if (!(g_image.mlx_ptr = mlx_new_image(g_mlx, g_window.width, g_window.height)))
-    {
-        ft_putstr_fd("Error\nCannot get image pointer.\n", 1);
-        return (ERROR);
-    }
-    g_image.data_addr = (int *)mlx_get_data_addr(g_image.mlx_ptr, &g_image.bpp, &g_image.line_length, &g_image.endian);
-    if (!(g_image.data_addr))
-    {
-        ft_putstr_fd("Error\nCannont get image data.\n", 1);
-        return(ERROR);
-    }
-    return (SUCCESS);
+	if (!(g_image.mlx_ptr = mlx_new_image(g_mlx, g_window.width, g_window.height)))
+	{
+		ft_putstr_fd("Error\nCannot get image pointer.\n", 1);
+		return (ERROR);
+	}
+	g_image.data_addr = (int *)mlx_get_data_addr(g_image.mlx_ptr, &g_image.bpp, &g_image.line_length, &g_image.endian);
+	if (!(g_image.data_addr))
+	{
+		ft_putstr_fd("Error\nCannont get image data.\n", 1);
+		return(ERROR);
+	}
+	return (SUCCESS);
 }
 
 float	ft_gettransformy(t_sprite *sprite, t_player *player, int id)
@@ -27,11 +39,11 @@ float	ft_gettransformy(t_sprite *sprite, t_player *player, int id)
 	spritex = sprite->x[id] - player->x;
 	spritey = sprite->y[id] - player->y;
 	invdet = 1.0 / (sprite->planx * sprite->diry -
-	sprite->dirx * sprite->plany);
+			sprite->dirx * sprite->plany);
 	transformx = invdet * (sprite->diry * spritex - sprite->dirx * spritey);
 	transformy = invdet * (-sprite->plany * spritex + sprite->planx * spritey);
 	sprite->spritescreenx = (int)((g_window.width / 2) *
-	(1 + -transformx / transformy));
+			(1 + -transformx / transformy));
 	return (transformy);
 }
 
@@ -89,7 +101,7 @@ void			ft_spritedistance(void)
 	while (id < g_sprite.nb_sprite)
 	{
 		g_sprite.distance[id] = distance_between_points(player.x,
-		player.y, g_sprite.x[id], g_sprite.y[id]);
+				player.y, g_sprite.x[id], g_sprite.y[id]);
 		id++;
 	}
 }
@@ -105,7 +117,7 @@ float	ft_calculangle(t_player *player, float x, float y)
 	vectx = x - player->x;
 	vecty = y - player->y;
 	playertospriteangle = atan2(vecty, vectx);
-	playerangle = normalize_angle(player->rotationAngle);
+	playerangle = normalize_angle(player->rotation_angle);
 	spriteangle = playerangle - playertospriteangle;
 	if (spriteangle < -3.14159)
 		spriteangle += 2.0 * 3.14159;
@@ -124,9 +136,9 @@ int		ft_spritevisible(int id, float sprite_size)
 	float	fovsprite;
 
 	spriteangle = fabs(ft_calculangle(&player, g_sprite.x[id],
-		g_sprite.y[id]));
+				g_sprite.y[id]));
 	spriteangle_end = fabs(ft_calculangle(&player, (g_sprite.x[id]
-		+ sprite_size), (g_sprite.y[id] + sprite_size)));
+					+ sprite_size), (g_sprite.y[id] + sprite_size)));
 	wallspriteangle = fabs(spriteangle_end - spriteangle);
 	fovsprite = g_fov / 2 + wallspriteangle;
 	if (spriteangle < fovsprite)
@@ -144,7 +156,7 @@ void	ft_puttexture(t_sprite *sprite, int x, int y, float sprite_size)
 
 	a = sizeof(sprite->data_addr);
 	textureoffsetx = (int)(256 * (x - (-sprite_size / 2 +
-	sprite->spritescreenx)) * sprite->width / sprite_size) / 256;
+					sprite->spritescreenx)) * sprite->width / sprite_size) / 256;
 	distancefromtop = (y) * 256 - g_window.height * 128 + sprite_size * 128;
 	textureoffsety = ((distancefromtop * sprite->height) / sprite_size) / 256;
 	if (((textureoffsety * sprite->width) + textureoffsetx) < a)
@@ -163,7 +175,7 @@ void	ft_drawsprite(t_sprite *sprite, float transformy, float sprite_size)
 	while (x < sprite->drawendx)
 	{
 		if (transformy > 0 && x > 0 && x < g_window.width &&
-		transformy < sprite->buffer[x])
+				transformy < sprite->buffer[x])
 		{
 			y = sprite->drawstarty;
 			while (y < sprite->drawendy)
@@ -213,7 +225,7 @@ void			put_sprite(void)
 	{
 		distanceprojection = (g_window.width / 2) / tan(g_fov / 2);
 		sprite_size = g_tile_size * 0.5 / g_sprite.distance[id] *
-		distanceprojection;
+			distanceprojection;
 		ft_zero();
 		if (ft_spritevisible(id, sprite_size) == 1)
 		{
@@ -229,20 +241,20 @@ void			put_sprite(void)
 
 int				create_one_frame(t_info *info)
 {
-    if (init_image() == ERROR)
-        return (free_memory(info, ERROR));
-    move_player();
+	if (init_image() == ERROR)
+		return (free_memory(info, ERROR));
+	move_player();
 	draw_ceiling();
-    draw_floor();
-    cast_rays();
-    draw_mini_map();
-    put_sprite();
-    if (info->screenshoot == 1)
+	draw_floor();
+	cast_rays();
+	draw_mini_map();
+	put_sprite();
+	if (info->screenshoot == 1)
 		bmp_exporter("my_screenshoot.bmp");
 	else
-    {
-        mlx_put_image_to_window(g_mlx, g_window.mlx_ptr, g_image.mlx_ptr, 0, 0);
-        mlx_destroy_image(g_mlx, g_image.mlx_ptr);
-        g_image.mlx_ptr = 0;
-    }
+	{
+		mlx_put_image_to_window(g_mlx, g_window.mlx_ptr, g_image.mlx_ptr, 0, 0);
+		mlx_destroy_image(g_mlx, g_image.mlx_ptr);
+		g_image.mlx_ptr = 0;
+	}
 }

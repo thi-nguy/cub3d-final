@@ -15,7 +15,7 @@ LIBFT = -L./libft/ -lft
 MINILIBX = -L./minilibx-linux/ -lmlx -lmlx_Linux 		#put this on when we compile sur Linux
 OTHER_LIB = -lXext -lX11 -lm -lbsd 					#put this on when we compile sur Linux
 
-FLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address 
+FLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address
 # -framework OpenGL -framework AppKit
 # -fsanitize=address: dung de chi ra memory leak neu co
 
@@ -46,6 +46,10 @@ SRC = 	./src/main.c\
 		./src/move_player.c\
 		./src/cast_ray.c\
 		./src/bmp_export.c\
+		./src/render_ray.c\
+		./src/find_intercept.c\
+		./src/find_smallest_distance.c\
+		./src/draw_mini_map_utils.c\
 
 
 OBJ = $(SRC:.c=.o)
@@ -54,7 +58,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./libft
-	$(CC) -o $(NAME) $(OBJ) $(FLAGS) $(LIBFT)  $(MINILIBX) $(OTHER_LIB) 
+	$(CC) -o $(NAME) $(OBJ) $(FLAGS) $(LIBFT)  $(MINILIBX) $(OTHER_LIB)
 
 clean:
 	-@echo "Removing object files..."

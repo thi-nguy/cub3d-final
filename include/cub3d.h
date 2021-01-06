@@ -64,7 +64,7 @@ int			check_copy_map_element_into_array(t_list *map_lst,
 char		check_valid_element(char c);
 int			check_if_map_close(t_info *info);
 int			flood_fill(int **map_copy, int map_row,
-			int map_col, int row, int col, int i);
+			int map_col, int row, int col);
 void		get_player_position(t_info *info, int row, int col);
 int			init_mlx(void);
 void		init_player(t_info *info);
@@ -103,7 +103,7 @@ void		cast_one_ray(float ray_angle, int strip_id);
 void		render_ray(int column_id);
 void		draw_wall(t_wall *wall, int column_id);
 int			choice_of_texture(void);
-void		find_smallest_distance();
+void		find_smallest_distance(void);
 void		the_smallest_of_the_distances_utile(float vert_hit_distance,
 			float horz_hit_distance);
 float		distance_between_points(float x1, float y1, float x2, float y2);
@@ -132,5 +132,6 @@ void		ft_sortsprite();
 void		ft_switch(t_sprite *sprite, int i, int j);
 void		ft_zero(void);
 float		ft_gettransformy(t_sprite *sprite, t_player *player, int id);
+void		check_extension(char **av);
 
 #endif

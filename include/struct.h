@@ -15,7 +15,7 @@
 
 typedef struct		s_info
 {
-	t_list*			head_llist;
+	t_list			*head_llist;
 	int				screenshoot;
 	int				fd;
 	int				map_row;
@@ -52,11 +52,11 @@ typedef struct		s_player
 	float			width;
 	float			height;
 	float			rotaion_line_length;
-	int				turnDirection;
-	int				walkDirection;
-	float			rotationAngle;
-	float			walkSpeed;
-	float			turnSpeed;
+	int				turn_direction;
+	int				walk_direction;
+	float			rotation_angle;
+	float			walk_speed;
+	float			turn_speed;
 	char			position;
 	int				translation;
 	float			angle;
