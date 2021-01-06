@@ -29,8 +29,8 @@ void	draw_player(void)
 
 	x_minimap = g_player.x * SIZE_MINI_MAP;
 	y_minimap = g_player.y * SIZE_MINI_MAP;
-	draw_grid(y_minimap, x_minimap, y_minimap + g_player.height, x_minimap +
-			g_player.width, color);
+	draw_grid_player(y_minimap, x_minimap, y_minimap + g_player.height, x_minimap +
+			g_player.width);
 }
 
 void	draw_sprite(void)
