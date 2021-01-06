@@ -64,10 +64,10 @@ void			move_player(void)
 	float	new_player_y;
 	int		player_orientation;
 
-	player_orientation = player_orientation_angle(player.rotation_angle);
-	player.rotation_angle += player.turn_direction * player.turn_speed;
-	move_step = player.walk_direction * player.walk_speed;
-	new_player_x = player.x + cos(player.rotation_angle) * move_step;
-	new_player_y = player.y + sin(player.rotation_angle) * move_step;
-	update_position(&player, new_player_y, new_player_x, &g_sprite);
+	player_orientation = player_orientation_angle(g_player.rotation_angle);
+	g_player.rotation_angle += g_player.turn_direction * g_player.turn_speed;
+	move_step = g_player.walk_direction * g_player.walk_speed;
+	new_player_x = g_player.x + cos(g_player.rotation_angle) * move_step;
+	new_player_y = g_player.y + sin(g_player.rotation_angle) * move_step;
+	update_position(&g_player, new_player_y, new_player_x, &g_sprite);
 }

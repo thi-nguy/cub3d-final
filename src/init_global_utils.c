@@ -32,8 +32,7 @@ int		load_wall_texture_ptr(void)
 		if (!g_texture[i].data_addr)
 		{
 			printf("At position i = %d\n", i);
-			ft_putstr_fd("Error\nCan not get data address from wall
-					texture's path.\n", 1);
+			ft_putstr_fd("Error\nCan not get data from wall texture's path.\n", 1);
 			return (ERROR);
 		}
 		i++;

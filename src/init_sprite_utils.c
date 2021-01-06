@@ -38,7 +38,7 @@ void			get_position_sprite(t_sprite *sprite, int **map)
 	}
 }
 
-voidi			init_vecteur_north(t_sprite *sprite)
+void			init_vecteur_north(t_sprite *sprite)
 {
 	sprite->dirx = 0;
 	sprite->diry = -1;
@@ -46,7 +46,7 @@ voidi			init_vecteur_north(t_sprite *sprite)
 	sprite->plany = 0;
 }
 
-static void		init_vecteur(t_sprite *sprite, char player_position)
+void		init_vecteur(t_sprite *sprite, char player_position)
 {
 	if (player_position == 'E')
 	{

@@ -18,8 +18,7 @@ int				load_ptr_and_data_sprite(void)
 			&g_sprite.width, &g_sprite.height);
 	if (!g_sprite.mlx_ptr)
 	{
-		ft_putstr_fd("Error\nCannot get pointer to file of
-				sprite's texture\n", 1);
+		ft_putstr_fd("Error\nCannot get pointer to sprite's texture\n", 1);
 		return (ERROR);
 	}
 	g_sprite.data_addr = (int *)mlx_get_data_addr(g_sprite.mlx_ptr,
@@ -107,6 +106,6 @@ int				init_sprite(void)
 	if (load_ptr_and_data_sprite() == ERROR)
 		return (ERROR);
 	get_position_sprite(&g_sprite, g_grid_array);
-	init_vecteur(&g_sprite, player.position);
+	init_vecteur(&g_sprite, g_player.position);
 	return (SUCCESS);
 }

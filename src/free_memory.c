@@ -18,7 +18,7 @@ void	free_array(char **array, int len)
 
 	if (!array)
 		return ;
-	i + 0;
+	i = 0;
 	while (i < len)
 	{
 		free(array[i]);

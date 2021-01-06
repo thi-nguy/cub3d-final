@@ -40,8 +40,7 @@ int		put_map_in_array(t_list **lst, int row, int col)
 
 	if (!(map_llist = get_first_line_map(lst)))
 	{
-		ft_putstr_fd("Error\nCannot find the start of map or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the start of map.\n", 1);
 		return (ERROR);
 	}
 	if (!(g_grid_array = alloc_memory(row, col)))
@@ -64,8 +63,7 @@ int		get_row_column(t_list **lst, int *row, int *col)
 
 	if (!(map_llist = get_first_line_map(lst)))
 	{
-		ft_putstr_fd("Error\nCannot find the start of map or
-				map is invalid.\n", 1);
+		ft_putstr_fd("Error\nCannot find the start of map.\n", 1);
 		return (ERROR);
 	}
 	if ((*row = ft_lstsize(map_llist)) < 3)

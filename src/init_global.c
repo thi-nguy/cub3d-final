@@ -54,17 +54,17 @@ void	init_info(t_info *info)
 
 void	init_player(t_info *info)
 {
-	player.turn_direction = 0;
-	player.walk_direction = 0;
-	player.walk_speed = 1;
-	player.turn_speed = 3 * (M_PI / 180);
-	player.x = g_tile_size * info->player_start_x + g_tile_size / 2;
-	player.y = g_tile_size * info->player_start_y + g_tile_size / 2;
-	player.rotation_angle = get_rotation_angle(info->player_start_angle);
-	player.rotaion_line_length = 20;
-	player.width = 5;
-	player.height = 5;
-	player.position = info->player_position;
+	g_player.turn_direction = 0;
+	g_player.walk_direction = 0;
+	g_player.walk_speed = 1;
+	g_player.turn_speed = 3 * (M_PI / 180);
+	g_player.x = g_tile_size * info->player_start_x + g_tile_size / 2;
+	g_player.y = g_tile_size * info->player_start_y + g_tile_size / 2;
+	g_player.rotation_angle = get_rotation_angle(info->player_start_angle);
+	g_player.rotaion_line_length = 20;
+	g_player.width = 5;
+	g_player.height = 5;
+	g_player.position = info->player_position;
 }
 
 int		init_window(t_info *info)

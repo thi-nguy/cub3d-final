@@ -19,8 +19,7 @@ int	parse_resolution(t_list **lst)
 
 	if (!(node = get_node(lst, "R")))
 	{
-		ft_putstr_fd("Error\nCannot find the resolution or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the resolution.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element(node->content, 3) == ERROR)
@@ -30,8 +29,7 @@ int	parse_resolution(t_list **lst)
 	g_window.height = ft_atoi(line[2]);
 	if (g_window.width <= 0 || g_window.height <= 0)
 	{
-		ft_putstr_fd("Error\nWindow size is
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nWindow size is	not correct.\n", 1);
 		free_array(line, 3);
 		return (ERROR);
 	}
@@ -46,8 +44,7 @@ int	parse_floor_color(t_list **lst)
 
 	if (!(node = get_node(lst, "F")))
 	{
-		ft_putstr_fd("Error\nCannot find the floor color or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the floor color.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element_color(node->content + 2, 3) == ERROR)
@@ -69,8 +66,7 @@ int	parse_ceiling_color(t_list **lst)
 
 	if (!(node = get_node(lst, "C")))
 	{
-		ft_putstr_fd("Error\nCannot find the ceiling color or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the ceiling color.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element_color(node->content + 2, 3) == ERROR)
@@ -92,8 +88,7 @@ int	parse_sprite_path(t_list **lst)
 
 	if (!(node = get_node(lst, "S")))
 	{
-		ft_putstr_fd("Error\nCannot find the Sprite or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the Sprite.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element(node->content, 2) == ERROR)

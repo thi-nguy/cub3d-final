@@ -19,9 +19,9 @@ int		ft_spritevisible(int id, float sprite_size)
 	float	wallspriteangle;
 	float	fovsprite;
 
-	spriteangle = fabs(ft_calculangle(&player, g_sprite.x[id],
+	spriteangle = fabs(ft_calculangle(&g_player, g_sprite.x[id],
 				g_sprite.y[id]));
-	spriteangle_end = fabs(ft_calculangle(&player, (g_sprite.x[id]
+	spriteangle_end = fabs(ft_calculangle(&g_player, (g_sprite.x[id]
 					+ sprite_size), (g_sprite.y[id] + sprite_size)));
 	wallspriteangle = fabs(spriteangle_end - spriteangle);
 	fovsprite = g_fov / 2 + wallspriteangle;
@@ -64,8 +64,8 @@ void	ft_spritedistance(void)
 	id = 0;
 	while (id < g_sprite.nb_sprite)
 	{
-		g_sprite.distance[id] = distance_between_points(player.x,
-				player.y, g_sprite.x[id], g_sprite.y[id]);
+		g_sprite.distance[id] = distance_between_points(g_player.x,
+				g_player.y, g_sprite.x[id], g_sprite.y[id]);
 		id++;
 	}
 }
@@ -79,7 +79,7 @@ void	put_sprite(void)
 
 	id = 0;
 	ft_spritedistance();
-	ft_sortsprite(g_sprite);
+	ft_sortsprite();
 	while (id < g_sprite.nb_sprite)
 	{
 		distanceprojection = (g_window.width / 2) / tan(g_fov / 2);
@@ -88,7 +88,7 @@ void	put_sprite(void)
 		ft_zero();
 		if (ft_spritevisible(id, sprite_size) == 1)
 		{
-			transformy = ft_gettransformy(&g_sprite, &player, id);
+			transformy = ft_gettransformy(&g_sprite, &g_player, id);
 			ft_getstart(&g_sprite, sprite_size, transformy);
 			ft_drawsprite(&g_sprite, transformy, sprite_size);
 		}

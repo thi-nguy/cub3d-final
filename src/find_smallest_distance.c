@@ -17,18 +17,18 @@ void	the_smallest_of_the_distances_utile(float vert_hit_distance,
 {
 	if (horz_hit_distance < vert_hit_distance)
 	{
-		ray.wall_hit_x = ray.horz_wall_hit_x;
-		ray.wall_hit_y = ray.horz_wall_hit_y;
-		ray.distance = horz_hit_distance;
+		g_ray.wall_hit_x = g_ray.horz_wall_hit_x;
+		g_ray.wall_hit_y = g_ray.horz_wall_hit_y;
+		g_ray.distance = horz_hit_distance;
 	}
 	else
 	{
-		ray.wall_hit_x = ray.vert_wall_hit_x;
-		ray.wall_hit_y = ray.vert_wall_hit_y;
-		ray.distance = vert_hit_distance;
+		g_ray.wall_hit_x = g_ray.vert_wall_hit_x;
+		g_ray.wall_hit_y = g_ray.vert_wall_hit_y;
+		g_ray.distance = vert_hit_distance;
 	}
 	if (vert_hit_distance < horz_hit_distance)
-		ray.was_hit_vertical = 1;
+		g_ray.was_hit_vertical = 1;
 }
 
 float	distance_between_points(float x1, float y1, float x2, float y2)
@@ -43,14 +43,14 @@ void	find_smallest_distance(void)
 
 	horz_hit_distance = 0;
 	vert_hit_distance = 0;
-	if (ray.found_horz_wall_hit == 1)
-		horz_hit_distance = distance_between_points(player.x, player.y,
-				ray.horz_wall_hit_x, ray.horz_wall_hit_y);
+	if (g_ray.found_horz_wall_hit == 1)
+		horz_hit_distance = distance_between_points(g_player.x, g_player.y,
+				g_ray.horz_wall_hit_x, g_ray.horz_wall_hit_y);
 	else
 		horz_hit_distance = MAX_VALUE;
-	if (ray.found_vert_wall_hit == 1)
-		vert_hit_distance = distance_between_points(player.x, player.y,
-				ray.vert_wall_hit_x, ray.vert_wall_hit_y);
+	if (g_ray.found_vert_wall_hit == 1)
+		vert_hit_distance = distance_between_points(g_player.x, g_player.y,
+				g_ray.vert_wall_hit_x, g_ray.vert_wall_hit_y);
 	else
 		vert_hit_distance = MAX_VALUE;
 	the_smallest_of_the_distances_utile(vert_hit_distance, horz_hit_distance);

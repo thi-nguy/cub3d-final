@@ -25,9 +25,9 @@ int		check_format(char *av, char *format)
 		return (ft_strcmp(av + av_l - format_l, format));
 }
 
-void	check_extension(char **av, char *extension_name)
+void	check_extension(char **av)
 {
-	if (check_format(av[1], &extension_name) == ERROR)
+	if (check_format(av[1], ".cub") == ERROR)
 	{
 		ft_putstr_fd("The file format should be '.cub'.\n", 1);
 		exit(ERROR);

@@ -67,7 +67,7 @@ typedef struct		s_sprite
 	int				nb_sprite;
 	char			*path;
 	void			*mlx_ptr;
-	int				data_addr;
+	int				*data_addr;
 	int				bpp;
 	int				endian;
 	int				line_length;

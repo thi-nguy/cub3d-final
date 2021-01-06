@@ -26,7 +26,7 @@ void	draw_grid(int x, int y, int x1, int y1, int tilecolor)
 		tmp_y = y;
 		while (tmp_y <= y1)
 		{
-			my_mlx_put_pixel(x, tmp_y, tileColor);
+			my_mlx_put_pixel(x, tmp_y, tilecolor);
 			tmp_y++;
 		}
 		x++;
@@ -44,15 +44,15 @@ void	draw_line(int cor_y, int cor_x)
 	i = 0;
 	x = 0;
 	y = 0;
-	while (i < player.rotaion_line_length)
+	while (i < g_player.rotaion_line_length)
 	{
 		if (&g_image.data_addr[(cor_y + y) * g_window.width +
 				(cor_x + x)] < g_image.data_addr)
 			return ;
 		g_image.data_addr[(cor_y + y) * g_window.width +
 			(cor_x + x)] = 0xff0000;
-		x = cos(player.rotation_angle) * longeur;
-		y = sin(player.rotation_angle) * longeur;
+		x = cos(g_player.rotation_angle) * longeur;
+		y = sin(g_player.rotation_angle) * longeur;
 		longeur++;
 		i++;
 	}

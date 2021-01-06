@@ -20,17 +20,17 @@ void	next_horz_intercept(float next_y, float next_x)
 			next_y <= (g_map_row * g_tile_size))
 	{
 		tmp = 0;
-		if (ray.is_ray_facing_up)
+		if (g_ray.is_ray_facing_up)
 			tmp = 1;
 		if (has_wall_at(next_y - tmp, next_x))
 		{
-			ray.horz_wall_hit_y = next_y;
-			ray.horz_wall_hit_x = next_x;
-			ray.found_horz_wall_hit = 1;
+			g_ray.horz_wall_hit_y = next_y;
+			g_ray.horz_wall_hit_x = next_x;
+			g_ray.found_horz_wall_hit = 1;
 			return ;
 		}
-		next_x += ray.x_step;
-		next_y += ray.y_step;
+		next_x += g_ray.x_step;
+		next_y += g_ray.y_step;
 	}
 }
 
@@ -65,17 +65,17 @@ void	next_vert_intercept(float next_vert_touch_y, float next_vert_touch_x)
 			&& next_vert_touch_y >= 0 && next_vert_touch_y <= g_window.height)
 	{
 		tmp = 0;
-		if (ray.is_ray_facing_left)
+		if (g_ray.is_ray_facing_left)
 			tmp = 1;
 		if (has_wall_at(next_vert_touch_y, next_vert_touch_x - tmp))
 		{
-			ray.found_vert_wall_hit = 1;
-			ray.vert_wall_hit_x = next_vert_touch_x;
-			ray.vert_wall_hit_y = next_vert_touch_y;
+			g_ray.found_vert_wall_hit = 1;
+			g_ray.vert_wall_hit_x = next_vert_touch_x;
+			g_ray.vert_wall_hit_y = next_vert_touch_y;
 			return ;
 		}
-		next_vert_touch_x += ray.x_step;
-		next_vert_touch_y += ray.y_step;
+		next_vert_touch_x += g_ray.x_step;
+		next_vert_touch_y += g_ray.y_step;
 	}
 }
 

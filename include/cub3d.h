@@ -29,7 +29,7 @@
 
 void		init_info(t_info *info);
 void		check_argument(int ac, char **av, int *save);
-void		check_extension(char **av, char *extension_name);
+void		check_extension(char **av);
 int			check_format(char *av, char *format);
 void		get_fd(char *arg, t_info *info);
 int			parse(t_info *info);
@@ -133,6 +133,8 @@ void		ft_sortsprite();
 void		ft_switch(t_sprite *sprite, int i, int j);
 void		ft_zero(void);
 float		ft_gettransformy(t_sprite *sprite, t_player *player, int id);
-void		check_extension(char **av);
+void		init_vecteur_north(t_sprite *sprite);
+void		get_position_sprite(t_sprite *sprite, int **map);
+void		init_vecteur(t_sprite *sprite, char player_position);
 
 #endif

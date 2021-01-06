@@ -14,14 +14,14 @@
 
 void	find_where_ray_face(void)
 {
-	if (ray.ray_angle > 0 && ray.ray_angle < M_PI)
-		ray.is_ray_facing_down = 1;
+	if (g_ray.ray_angle > 0 && g_ray.ray_angle < M_PI)
+		g_ray.is_ray_facing_down = 1;
 	else
-		ray.is_ray_facing_up = 1;
-	if (ray.ray_angle < (0.5 * M_PI) || ray.ray_angle > (1.5 * M_PI))
-		ray.is_ray_facing_right = 1;
+		g_ray.is_ray_facing_up = 1;
+	if (g_ray.ray_angle < (0.5 * M_PI) || g_ray.ray_angle > (1.5 * M_PI))
+		g_ray.is_ray_facing_right = 1;
 	else
-		ray.is_ray_facing_left = 1;
+		g_ray.is_ray_facing_left = 1;
 }
 
 float	normalize_angle(float angle)
@@ -36,36 +36,36 @@ float	normalize_angle(float angle)
 
 void	cast_one_ray(float ray_angle, int strip_id)
 {
-	ray.ray_angle = normalize_angle(ray_angle);
+	g_ray.ray_angle = normalize_angle(ray_angle);
 	find_where_ray_face();
-	find_horz_intercept(&ray, &player);
-	find_vert_intercept(&ray, &player);
+	find_horz_intercept(&g_ray, &g_player);
+	find_vert_intercept(&g_ray, &g_player);
 	find_smallest_distance();
 	render_ray(strip_id);
 }
 
 void	init_ray(void)
 {
-	ray.wall_hit_x = 0;
-	ray.wall_hit_y = 0;
-	ray.was_hit_vertical = 0;
-	ray.wall_hit_vertical = 0;
-	ray.x_step = 0;
-	ray.x_intercept = 0;
-	ray.y_step = 0;
-	ray.y_intercept = 0;
-	ray.distance = 0;
-	ray.is_ray_facing_down = 0;
-	ray.is_ray_facing_up = 0;
-	ray.is_ray_facing_right = 0;
-	ray.is_ray_facing_left = 0;
-	ray.wall_hit_content = 0;
-	ray.vert_wall_hit_x = 0;
-	ray.vert_wall_hit_y = 0;
-	ray.horz_wall_hit_y = 0;
-	ray.horz_wall_hit_x = 0;
-	ray.found_vert_wall_hit = 0;
-	ray.found_horz_wall_hit = 0;
+	g_ray.wall_hit_x = 0;
+	g_ray.wall_hit_y = 0;
+	g_ray.was_hit_vertical = 0;
+	g_ray.wall_hit_vertical = 0;
+	g_ray.x_step = 0;
+	g_ray.x_intercept = 0;
+	g_ray.y_step = 0;
+	g_ray.y_intercept = 0;
+	g_ray.distance = 0;
+	g_ray.is_ray_facing_down = 0;
+	g_ray.is_ray_facing_up = 0;
+	g_ray.is_ray_facing_right = 0;
+	g_ray.is_ray_facing_left = 0;
+	g_ray.wall_hit_content = 0;
+	g_ray.vert_wall_hit_x = 0;
+	g_ray.vert_wall_hit_y = 0;
+	g_ray.horz_wall_hit_y = 0;
+	g_ray.horz_wall_hit_x = 0;
+	g_ray.found_vert_wall_hit = 0;
+	g_ray.found_horz_wall_hit = 0;
 }
 
 void	cast_rays(void)
@@ -73,12 +73,12 @@ void	cast_rays(void)
 	int	strip_id;
 
 	strip_id = 0;
-	ray.ray_angle = player.rotation_angle - (g_fov / 2);
+	g_ray.ray_angle = g_player.rotation_angle - (g_fov / 2);
 	while (strip_id < g_num_rays)
 	{
 		init_ray();
-		cast_one_ray(ray.ray_angle, strip_id);
-		ray.ray_angle += g_fov / g_num_rays;
+		cast_one_ray(g_ray.ray_angle, strip_id);
+		g_ray.ray_angle += g_fov / g_num_rays;
 		strip_id++;
 	}
 }

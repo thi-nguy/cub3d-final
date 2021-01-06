@@ -1,9 +1,9 @@
 R 1600 800
-NO   ./textures/test.xpm 
-SO    ./textures/test1.xpm
-WE    ./textures/test2.xpm
-EA   ./textures/test3.xpm
-S   ./textures/test0.xpm
+NO   ./textures/stone1.xpm 
+SO    ./textures/stone2.xpm
+WE    ./textures/wall_korean_w.xpm
+EA   ./textures/wall_korean_e.xpm
+S   ./textures/skulls.xpm
 F 184,113,39
 C 51,198,227
 

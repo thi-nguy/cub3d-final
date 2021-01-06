@@ -19,8 +19,7 @@ int		parse_no_path(t_list **lst)
 
 	if (!(node = get_node(lst, "NO")))
 	{
-		ft_putstr_fd("Error\nCannot find the NO's path or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the NO's path.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element(node->content, 2) == ERROR)
@@ -44,8 +43,7 @@ int		parse_so_path(t_list **lst)
 
 	if (!(node = get_node(lst, "SO")))
 	{
-		ft_putstr_fd("Error\nCannot find the SO's path or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the SO's path.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element(node->content, 2) == ERROR)
@@ -57,7 +55,7 @@ int		parse_so_path(t_list **lst)
 		free_array(line, 2);
 		exit(ERROR);
 	}
-	g_SO_path = ft_strdup(line[1]);
+	g_so_path = ft_strdup(line[1]);
 	free_array(line, 2);
 	return (SUCCESS);
 }
@@ -69,8 +67,7 @@ int		parse_we_path(t_list **lst)
 
 	if (!(node = get_node(lst, "WE")))
 	{
-		ft_putstr_fd("Error\nCannot find the WE's path or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the WE's path.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element(node->content, 2) == ERROR)
@@ -82,7 +79,7 @@ int		parse_we_path(t_list **lst)
 		free_array(line, 2);
 		exit(ERROR);
 	}
-	g_WE_path = ft_strdup(line[1]);
+	g_we_path = ft_strdup(line[1]);
 	free_array(line, 2);
 	return (SUCCESS);
 }
@@ -94,8 +91,7 @@ int		parse_ea_path(t_list **lst)
 
 	if (!(node = get_node(lst, "EA")))
 	{
-		ft_putstr_fd("Error\nCannot find the EA's path or
-				misconfiguration.\n", 1);
+		ft_putstr_fd("Error\nCannot find the EA's path.\n", 1);
 		return (ERROR);
 	}
 	if (check_number_of_element(node->content, 2) == ERROR)
@@ -107,7 +103,7 @@ int		parse_ea_path(t_list **lst)
 		free_array(line, 2);
 		exit(ERROR);
 	}
-	g_EA_path = ft_strdup(line[1]);
+	g_ea_path = ft_strdup(line[1]);
 	free_array(line, 2);
 	return (SUCCESS);
 }
