@@ -31,6 +31,8 @@ SRC = 	./src/main.c\
 		./src/get_fd.c\
 		./src/parse.c\
 		./src/parse_info.c\
+		./src/parse_info_rfcs.c\
+		./src/parse_info_wall_texture.c\
 		./src/parse_info_utils.c\
 		./src/parse_map.c\
 		./src/parse_map_utils.c\
@@ -40,8 +42,8 @@ SRC = 	./src/main.c\
 		./src/check_copy_map_element_into_array.c\
 		./src/check_if_map_close.c\
 		./src/init_sprite.c\
+		./src/init_sprite_utils.c\
 		./src/game_loop.c\
-		./src/draw_floor_ceiling.c\
 		./src/draw_mini_map.c\
 		./src/move_player.c\
 		./src/cast_ray.c\
@@ -50,6 +52,9 @@ SRC = 	./src/main.c\
 		./src/find_intercept.c\
 		./src/find_smallest_distance.c\
 		./src/draw_mini_map_utils.c\
+		./src/draw_sprite.c\
+		./src/put_sprite.c\
+		./src/put_sprite_utils.c\
 
 
 OBJ = $(SRC:.c=.o)

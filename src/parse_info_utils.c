@@ -16,8 +16,8 @@ int find_item(const char *content, char* x)
 t_list* ft_lstfind(t_list* lst, char* item, int f(const char *, char *))
 {
     t_list *tmp;
-    t_list *prev; 
-    
+    t_list *prev;
+
     tmp = lst;
 
     if (!f)
@@ -75,22 +75,3 @@ int check_number_of_element_color(char* line, int num)
     }
 }
 
-int get_rgb_int(char** tab)
-{
-	int red;
-	int green;
-	int blue;
-	int color_int;
-	
-	red = ft_atoi(tab[0]);
-	green = ft_atoi(tab[1]);
-	blue = ft_atoi(tab[2]);
-    if (red > 255 || green > 255 || blue > 255 || red < 0 || green < 0 || blue < 0)
-    {
-        ft_putstr_fd("Error\n", 1);
-        ft_putstr_fd("Color code is not in range [0,255].\n", 1);
-        return (-1);
-    }
-    color_int = 65536 * red + 256 * green + blue;
-    return (color_int);
-}
