@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_intercept_distance.c                       :+:      :+:    :+:   */
+/*   render_ray.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 09:54:04 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/06 09:59:45 by thi-nguy         ###   ########.fr       */
+/*   Created: 2021/01/06 12:44:58 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 12:48:28 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	choice_of_texture(void)
+int		choice_of_texture(void)
 {
 	if (ray.is_ray_facing_up && !ray.was_hit_vertical)
 		return (0);
@@ -54,7 +54,7 @@ void	draw_wall(t_wall *wall, int column_id)
 	}
 }
 
-void		render_ray(int column_id)
+void	render_ray(int column_id)
 {
 	t_wall	wall;
 
@@ -71,4 +71,4 @@ void		render_ray(int column_id)
 	if (wall.wall_bottom > g_window.height)
 		wall.wall_bottom = g_window.height;
 	draw_wall(&wall, column_id);
-}
+

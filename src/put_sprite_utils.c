@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_sprite_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/06 12:44:03 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 12:44:46 by thi-nguy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void		ft_switch(t_sprite *sprite, int i, int j)
+void	ft_switch(t_sprite *sprite, int i, int j)
 {
 	float		temp_dist;
 	float		temp_y;
@@ -16,10 +28,6 @@ void		ft_switch(t_sprite *sprite, int i, int j)
 	sprite->x[i] = temp_x;
 	sprite->y[i] = temp_y;
 }
-
-
-
-
 
 float	ft_calculangle(t_player *player, float x, float y)
 {

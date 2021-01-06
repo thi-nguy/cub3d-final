@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_sprite.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/06 12:46:06 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 12:48:14 by thi-nguy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 float	ft_gettransformy(t_sprite *sprite, t_player *player, int id)
@@ -18,7 +30,6 @@ float	ft_gettransformy(t_sprite *sprite, t_player *player, int id)
 			(1 + -transformx / transformy));
 	return (transformy);
 }
-
 
 void	ft_getstart(t_sprite *sprite, float sprite_size, float transformy)
 {
@@ -74,16 +85,15 @@ void	ft_puttexture(t_sprite *sprite, int x, int y, float sprite_size)
 	int	a;
 
 	a = sizeof(sprite->data_addr);
-	textureoffsetx = (int)(256 * (x - (-sprite_size / 2 +
-					sprite->spritescreenx)) * sprite->width / sprite_size) / 256;
+	textureoffsetx = (int)(256 * (x - (-sprite_size / 2
+					+ sprite->spritescreenx)) *
+			sprite->width / sprite_size) / 256;
 	distancefromtop = (y) * 256 - g_window.height * 128 + sprite_size * 128;
 	textureoffsety = ((distancefromtop * sprite->height) / sprite_size) / 256;
 	if (((textureoffsety * sprite->width) + textureoffsetx) < a)
 		return ;
-	color = sprite->data_addr[(textureoffsety * sprite->width) + textureoffsetx];
+	color = sprite->data_addr[(textureoffsety * sprite->width)
+		+ textureoffsetx];
 	if (color != 0x000000)
 		g_image.data_addr[y * g_window.width + x] = color;
 }
-
-
-

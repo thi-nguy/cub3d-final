@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_sprite.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/06 12:41:59 by thi-nguy          #+#    #+#             */
+/*   Updated: 2021/01/06 12:43:35 by thi-nguy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int		ft_spritevisible(int id, float sprite_size)
@@ -18,7 +30,7 @@ int		ft_spritevisible(int id, float sprite_size)
 	return (0);
 }
 
-void		ft_zero(void)
+void	ft_zero(void)
 {
 	g_sprite.drawstartx = 0;
 	g_sprite.drawendx = 0;
@@ -27,11 +39,10 @@ void		ft_zero(void)
 	g_sprite.spritescreenx = 0;
 }
 
-
-void	ft_sortsprite()
+void	ft_sortsprite(void)
 {
-	int			j;
-	int			i;
+	int	j;
+	int	i;
 
 	i = -1;
 	while (i++ < g_sprite.nb_sprite)
@@ -46,10 +57,9 @@ void	ft_sortsprite()
 	}
 }
 
-
-void			ft_spritedistance(void)
+void	ft_spritedistance(void)
 {
-	int			id;
+	int	id;
 
 	id = 0;
 	while (id < g_sprite.nb_sprite)
@@ -60,7 +70,7 @@ void			ft_spritedistance(void)
 	}
 }
 
-void			put_sprite(void)
+void	put_sprite(void)
 {
 	float		distanceprojection;
 	float		sprite_size;
