@@ -65,6 +65,22 @@ void	draw_grid_player(int x, int y, int x1, int y1)
 	}
 }
 
+void	draw_grid_space(int x, int y, int x1, int y1)
+{
+	int tmp_y;
+
+	while (x <= x1)
+	{
+		tmp_y = y;
+		while (tmp_y <= y1)
+		{
+			my_mlx_put_pixel(x, tmp_y, SPRITE_COLOR);
+			tmp_y++;
+		}
+		x++;
+	}
+}
+
 void	draw_line(int cor_y, int cor_x)
 {
 	float		i;

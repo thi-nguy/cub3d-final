@@ -86,6 +86,7 @@ void		draw_map(int x, int y);
 void		draw_grid_wall(int x, int y, int x1, int y1);
 void		draw_grid_space(int x, int y, int x1, int y1);
 void		draw_grid_player(int x, int y, int x1, int y1);
+void		draw_grid_sprite(int x, int y, int x1, int y1);
 void		my_mlx_put_pixel(int x, int y, int color);
 void		game_loop(t_info *info);
 int			create_one_frame(t_info *info);

@@ -49,7 +49,7 @@ void	draw_sprite(void)
 		{
 			x = j * g_tile_size * SIZE_MINI_MAP;
 			if (g_grid_array[i][j] == 2)
-				draw_grid(y, x, y + 5, x + 5, color);
+				draw_grid_sprite(y, x, y + 5, x + 5);
 			j++;
 		}
 		i++;
