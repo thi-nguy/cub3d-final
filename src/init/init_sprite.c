@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int				load_ptr_and_data_sprite(void)
+int				init_sprite(void)
 {
 	g_sprite.mlx_ptr = mlx_xpm_file_to_image(g_mlx, g_sprite.path,
 			&g_sprite.width, &g_sprite.height);
@@ -92,7 +92,7 @@ int				count_sprite(int **map)
 	return (nb_sprite);
 }
 
-int				init_sprite(void)
+int				setup_sprite(void)
 {
 	g_sprite.nb_sprite = count_sprite(g_grid_array);
 	if (g_sprite.nb_sprite <= 0)
@@ -103,7 +103,7 @@ int				init_sprite(void)
 	if (ft_mallocsprite(&g_sprite) == ERROR)
 		return (ERROR);
 	put_to_zero(&g_sprite);
-	if (load_ptr_and_data_sprite() == ERROR)
+	if (init_sprite() == ERROR)
 		return (ERROR);
 	get_position_sprite(&g_sprite, g_grid_array);
 	init_vecteur(&g_sprite, g_player.position);

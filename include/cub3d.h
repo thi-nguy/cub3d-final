@@ -27,7 +27,7 @@
 # include "struct.h"
 # include "global.h"
 
-void		init_info(t_info *info);
+void		setup_info(t_info *info);
 void		check_argument(int ac, char **av, int *save);
 void		check_extension(char **av);
 int			check_format(char *av, char *format);
@@ -67,16 +67,15 @@ int			check_if_map_close(t_info *info);
 int			flood_fill(int **map_copy, int row, int col);
 void		get_player_position(t_info *info, int row, int col);
 int			init_mlx(void);
-void		init_player(t_info *info);
-void		init_global(void);
+void		setup_player(t_info *info);
+void		setup_global(void);
 void		put_wall_texture_into_array(void);
-int			load_wall_texture_ptr(void);
+int			init_texture(void);
 void		init_g_wall_texture(void);
-void		get_global(t_info *info);
 float		get_rotation_angle(double angle);
-int			init_sprite(void);
+int			setup_sprite(void);
 int			count_sprite(int **map);
-int			load_ptr_and_data_sprite(void);
+int			init_sprite(void);
 void		get_position_sprite(t_sprite *sprite, int **map);
 int			ft_mallocsprite(t_sprite *sprite);
 int			init_window(t_info *info);
@@ -87,7 +86,6 @@ void		draw_grid_wall(int x, int y, int x1, int y1);
 void		draw_grid_space(int x, int y, int x1, int y1);
 void		draw_grid_player(int x, int y, int x1, int y1);
 void		draw_grid_sprite(int x, int y, int x1, int y1);
-void		my_mlx_put_pixel(int x, int y, int color);
 void		game_loop(t_info *info);
 int			create_one_frame(t_info *info);
 int			close_window(int key_code, t_info *info);
@@ -112,8 +110,10 @@ void		the_smallest_of_the_distances_utile(float vert_hit_distance,
 float		distance_between_points(float x1, float y1, float x2, float y2);
 void		init_ray();
 void		find_vert_intercept(t_ray *ray, t_player *player);
-void		next_vert_intercept(float next_y, float next_x);
-void		next_horz_intercept(float next_y, float next_x);
+void		get_first_vert_intercept(t_ray *ray, t_player *player);
+void		get_last_vert_intercept(float next_y, float next_x);
+void		get_last_horz_intercept(float next_y, float next_x);
+void 		get_first_horz_intercept(t_ray *ray, t_player *player);
 void		find_horz_intercept(t_ray *ray, t_player *player);
 void		find_where_ray_face();
 float		normalize_angle(float angle);
@@ -137,5 +137,7 @@ float		ft_gettransformy(t_sprite *sprite, t_player *player, int id);
 void		init_vecteur_north(t_sprite *sprite);
 void		get_position_sprite(t_sprite *sprite, int **map);
 void		init_vecteur(t_sprite *sprite, char player_position);
+void 		get_first_horz_intercept(t_ray *ray, t_player *player);
+void		get_last_horz_intercept(float next_y, float next_x);
 
 #endif

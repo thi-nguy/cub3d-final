@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	init_global(void)
+void	setup_global(void)
 {
 	g_window.width = 0;
 	g_window.height = 0;
@@ -25,6 +25,9 @@ void	init_global(void)
 	g_so_path = NULL;
 	g_no_path = NULL;
 	g_grid_array = NULL;
+	g_texture[0].mlx_ptr = 0;
+	g_wall_strip_width = 1;
+	g_fov = (60 * (M_PI / 180));
 }
 
 int		init_mlx(void)
@@ -41,7 +44,7 @@ int		init_mlx(void)
 	return (SUCCESS);
 }
 
-void	init_info(t_info *info)
+void	setup_info(t_info *info)
 {
 	info->fd = 0;
 	info->map_col = 0;
@@ -52,7 +55,7 @@ void	init_info(t_info *info)
 	info->player_start_y = -1;
 }
 
-void	init_player(t_info *info)
+void	setup_player(t_info *info)
 {
 	g_player.turn_direction = 0;
 	g_player.walk_direction = 0;
@@ -89,5 +92,7 @@ int		init_window(t_info *info)
 		}
 	}
 	g_window.mlx_ptr = win_mlx;
+	g_tile_size = g_window.width / g_map_col;
+	g_num_rays = g_window.width / g_wall_strip_width;
 	return (SUCCESS);
 }

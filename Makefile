@@ -27,34 +27,34 @@ RM = rm -f
 NAME = cub3D
 
 SRC = 	./src/main.c\
-		./src/check_argument.c\
-		./src/get_fd.c\
-		./src/parse.c\
-		./src/parse_info.c\
-		./src/parse_info_rfcs.c\
-		./src/parse_info_wall_texture.c\
-		./src/parse_info_utils.c\
-		./src/parse_map.c\
-		./src/parse_map_utils.c\
-		./src/init_global.c\
-		./src/init_global_utils.c\
-		./src/free_memory.c\
-		./src/check_copy_map_element_into_array.c\
-		./src/check_if_map_close.c\
-		./src/init_sprite.c\
-		./src/init_sprite_utils.c\
-		./src/game_loop.c\
-		./src/draw_mini_map.c\
-		./src/move_player.c\
-		./src/cast_ray.c\
-		./src/bmp_export.c\
-		./src/render_ray.c\
-		./src/find_intercept.c\
-		./src/find_smallest_distance.c\
-		./src/draw_mini_map_utils.c\
-		./src/draw_sprite.c\
-		./src/put_sprite.c\
-		./src/put_sprite_utils.c\
+		./src/utils/check_argument.c\
+		./src/utils/free_memory.c\
+		./src/utils/game_loop.c\
+		./src/utils/get_fd.c\
+		./src/parse_map/check_copy_map_element_into_array.c\
+		./src/parse_map/check_if_map_close.c\
+		./src/parse_map/parse_map_utils.c\
+		./src/parse_map/parse_map.c\
+		./src/parse_map/parse.c\
+		./src/parse_info/parse_info.c\
+		./src/parse_info/parse_info_rfcs.c\
+		./src/parse_info/parse_info_wall_texture.c\
+		./src/parse_info/parse_info_utils.c\
+		./src/move_player/move_player.c\
+		./src/init/init_global.c\
+		./src/init/init_global_utils.c\
+		./src/init/init_sprite.c\
+		./src/init/init_sprite_utils.c\
+		./src/export_bmp/bmp_export.c\
+		./src/draw_mini_map/draw_mini_map.c\
+		./src/draw_mini_map/draw_mini_map_utils.c\
+		./src/cast_ray/cast_ray.c\
+		./src/cast_ray/render_ray.c\
+		./src/cast_ray/find_intercept.c\
+		./src/cast_ray/find_smallest_distance.c\
+		./src/put_sprite/put_sprite_utils.c\
+		./src/put_sprite/put_sprite.c\
+		./src/put_sprite/draw_sprite.c\
 
 
 OBJ = $(SRC:.c=.o)

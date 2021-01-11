@@ -12,8 +12,6 @@
 
 #ifndef CONSTANT_H
 # define CONSTANT_H
-# define TRANSLATION_RIGHT 100
-# define TRANSLATION_LEFT 97
 # define SUCCESS 1
 # define ERROR 0
 # define VALID_ERROR -1

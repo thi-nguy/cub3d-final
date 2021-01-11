@@ -22,17 +22,23 @@ static int		player_orientation_angle(float angle)
 	return (0);
 }
 
-int				has_wall_at(float y, float x)
+int				
+
+
+has_wall_at(float y, float x)
 {
 	int map_grid_index_x;
 	int map_grid_index_y;
 
-	if (x < 0 || x > (g_map_col * g_tile_size)
-	|| y < 0 || y > (g_map_row * g_tile_size))
+	if (x < 0 || x > (g_tile_size * g_map_col)
+	|| y < 0 || y > (g_tile_size * g_map_row))
 		return (1);
 	map_grid_index_x = floor(x / g_tile_size);
 	map_grid_index_y = floor(y / g_tile_size);
-	return (g_grid_array[map_grid_index_y][map_grid_index_x] == 1);
+	if (map_grid_index_x >= g_map_col || map_grid_index_y >= g_map_row || g_grid_array[map_grid_index_y][map_grid_index_x] == 1)
+		return (1);
+	else
+		return (0);
 }
 
 static void		update_position(t_player *player, float y,
@@ -51,24 +57,40 @@ static void		update_position(t_player *player, float y,
 	sprite->planx = sprite->planx * cos(vectangle) - sprite->plany *
 		sin(vectangle);
 	sprite->plany = oldplanx * sin(vectangle) + sprite->plany * cos(vectangle);
-	if (!has_wall_at(y, x))
+	if (has_wall_at(y, x) != 1 )
 	{
 		player->y = y;
 		player->x = x;
 	}
 }
 
-void			move_player(void)
+void			move_player(void) //co van de o day
 {
 	float	move_step;
 	float	new_player_x;
 	float	new_player_y;
-	int		player_orientation;
+	int 	player_orientation;
+	float	angle;
 
-	player_orientation = player_orientation_angle(g_player.rotation_angle);
+	player_orientation = player_orientation_angle(g_player.rotation_angle); // cai nay de lam gi?
 	g_player.rotation_angle += g_player.turn_direction * g_player.turn_speed;
+	g_player.rotation_angle = normalize_angle(g_player.rotation_angle);
 	move_step = g_player.walk_direction * g_player.walk_speed;
 	new_player_x = g_player.x + cos(g_player.rotation_angle) * move_step;
 	new_player_y = g_player.y + sin(g_player.rotation_angle) * move_step;
+	if(g_player.shift_right == -1 || g_player.shift_right == 1)
+	{
+		angle = (M_PI * 0.5) - g_player.rotation_angle;
+		if (player_orientation == 1)
+		{
+			new_player_x = g_player.x - cos(angle) * move_step;
+			new_player_y = g_player.y + sin(angle) * move_step;
+		}
+		else if (player_orientation == 0)
+		{
+			new_player_x = g_player.x + cos(angle) * -move_step;
+			new_player_y = g_player.y - sin(angle) * -move_step;
+		}
+	}
 	update_position(&g_player, new_player_y, new_player_x, &g_sprite);
 }

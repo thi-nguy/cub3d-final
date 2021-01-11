@@ -26,9 +26,8 @@ void	the_smallest_of_the_distances_utile(float vert_hit_distance,
 		g_ray.wall_hit_x = g_ray.vert_wall_hit_x;
 		g_ray.wall_hit_y = g_ray.vert_wall_hit_y;
 		g_ray.distance = vert_hit_distance;
-	}
-	if (vert_hit_distance < horz_hit_distance)
 		g_ray.was_hit_vertical = 1;
+	}
 }
 
 float	distance_between_points(float x1, float y1, float x2, float y2)

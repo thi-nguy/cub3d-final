@@ -12,11 +12,6 @@
 
 #include "cub3d.h"
 
-void	my_mlx_put_pixel(int x, int y, int color)
-{
-	g_image.data_addr[x * g_window.width + y] = color;
-}
-
 void	draw_grid_wall(int x, int y, int x1, int y1)
 {
 	int tmp_y;
@@ -26,7 +21,7 @@ void	draw_grid_wall(int x, int y, int x1, int y1)
 		tmp_y = y;
 		while (tmp_y <= y1)
 		{
-			my_mlx_put_pixel(x, tmp_y, WALL_COLOR);
+			g_image.data_addr[x * g_window.width + tmp_y] = WALL_COLOR;
 			tmp_y++;
 		}
 		x++;
@@ -42,7 +37,7 @@ void	draw_grid_space(int x, int y, int x1, int y1)
 		tmp_y = y;
 		while (tmp_y <= y1)
 		{
-			my_mlx_put_pixel(x, tmp_y, SPACE_COLOR);
+			g_image.data_addr[x * g_window.width + tmp_y] = SPACE_COLOR;
 			tmp_y++;
 		}
 		x++;
@@ -58,7 +53,7 @@ void	draw_grid_player(int x, int y, int x1, int y1)
 		tmp_y = y;
 		while (tmp_y <= y1)
 		{
-			my_mlx_put_pixel(x, tmp_y, PLAYER_COLOR);
+			g_image.data_addr[x * g_window.width + tmp_y] = SPACE_COLOR;
 			tmp_y++;
 		}
 		x++;
@@ -74,7 +69,7 @@ void	draw_grid_sprite(int x, int y, int x1, int y1)
 		tmp_y = y;
 		while (tmp_y <= y1)
 		{
-			my_mlx_put_pixel(x, tmp_y, SPRITE_COLOR);
+			g_image.data_addr[x * g_window.width + tmp_y] = SPRITE_COLOR;
 			tmp_y++;
 		}
 		x++;

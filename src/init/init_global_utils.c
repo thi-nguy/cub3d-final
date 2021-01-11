@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int		load_wall_texture_ptr(void)
+int		init_texture(void)
 {
 	int i;
 
@@ -31,22 +31,12 @@ int		load_wall_texture_ptr(void)
 				&g_texture[i].endian);
 		if (!g_texture[i].data_addr)
 		{
-			printf("At position i = %d\n", i);
 			ft_putstr_fd("Error\nCan't get data from texture path.\n", 1);
 			return (ERROR);
 		}
 		i++;
 	}
 	return (SUCCESS);
-}
-
-void	get_global(t_info *info)
-{
-	g_texture[0].mlx_ptr = 0;
-	g_wall_strip_width = 1;
-	g_tile_size = g_window.width / g_map_col;
-	g_num_rays = g_window.width / g_wall_strip_width;
-	g_fov = (60 * (M_PI / 180));
 }
 
 float	get_rotation_angle(double angle)
