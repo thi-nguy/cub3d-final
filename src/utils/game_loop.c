@@ -97,7 +97,7 @@ void	game_loop(t_info *info)
 	int	key_code;
 
 	key_code = 0;
-	mlx_hook(g_window.mlx_ptr, 17, (1<<12), &close_window, &info);
+	mlx_hook(g_window.mlx_ptr, 33, (1L<<17), &close_window, &info);
 	mlx_hook(g_window.mlx_ptr, 2, (1L << 0), &key_pressed, &info);
 	mlx_hook(g_window.mlx_ptr, 3, (1L << 1), &key_release, &key_code);
 	mlx_loop_hook(g_mlx, &create_one_frame, &info);

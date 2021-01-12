@@ -53,7 +53,7 @@ void	draw_grid_player(int x, int y, int x1, int y1)
 		tmp_y = y;
 		while (tmp_y <= y1)
 		{
-			g_image.data_addr[x * g_window.width + tmp_y] = SPACE_COLOR;
+			g_image.data_addr[x * g_window.width + tmp_y] = PLAYER_COLOR;
 			tmp_y++;
 		}
 		x++;

@@ -31,7 +31,7 @@ int				init_sprite(void)
 	return (SUCCESS);
 }
 
-static	void	put_to_zero(t_sprite *sprite)
+static	void	setup_initial_sprite_value(t_sprite *sprite)
 {
 	sprite->angle = 0;
 	sprite->mlx_ptr = 0;
@@ -102,7 +102,7 @@ int				setup_sprite(void)
 	}
 	if (ft_mallocsprite(&g_sprite) == ERROR)
 		return (ERROR);
-	put_to_zero(&g_sprite);
+	setup_initial_sprite_value(&g_sprite);
 	if (init_sprite() == ERROR)
 		return (ERROR);
 	get_position_sprite(&g_sprite, g_grid_array);

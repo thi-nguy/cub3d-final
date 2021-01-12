@@ -19,7 +19,7 @@ int		close_window(int key_code, t_info *info)
 		mlx_destroy_image(g_mlx, g_image.mlx_ptr);
 		g_image.mlx_ptr = 0;
 	}
-	exit(free_memory(info, SUCCESS));
+	exit(SUCCESS);
 	(void)key_code;
 }
 
@@ -38,7 +38,7 @@ int		key_pressed(int key_code, t_info *info)
 	else if (key_code == KEY_D)
 	{
 		g_player.shift_right = 1;
-		g_player.walk_direction = +1;
+		g_player.walk_direction = 1;
 	}
 	else if (key_code == KEY_A)
 	{

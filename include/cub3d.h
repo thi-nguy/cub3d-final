@@ -139,5 +139,9 @@ void		get_position_sprite(t_sprite *sprite, int **map);
 void		init_vecteur(t_sprite *sprite, char player_position);
 void 		get_first_horz_intercept(t_ray *ray, t_player *player);
 void		get_last_horz_intercept(float next_y, float next_x);
+void		update_position(float x, float y);
+int			player_orientation_angle(float angle);
+void		update_sprite(void);
+void		update_player_position(float x, float y);
 
 #endif

@@ -41,6 +41,7 @@ SRC = 	./src/main.c\
 		./src/parse_info/parse_info_wall_texture.c\
 		./src/parse_info/parse_info_utils.c\
 		./src/move_player/move_player.c\
+		./src/move_player/move_player_utils.c\
 		./src/init/init_global.c\
 		./src/init/init_global_utils.c\
 		./src/init/init_sprite.c\

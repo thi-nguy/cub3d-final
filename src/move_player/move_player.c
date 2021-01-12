@@ -12,56 +12,10 @@
 
 #include "cub3d.h"
 
-static int		player_orientation_angle(float angle)
-{
-	angle = normalize_angle(angle);
-	if ((angle > M_PI * 0.25) && (angle < 0.75 * M_PI))
-		return (1);
-	else if ((angle > M_PI * 1.25) && (angle < 1.75 * M_PI))
-		return (1);
-	return (0);
-}
-
-int				
-
-
-has_wall_at(float y, float x)
-{
-	int map_grid_index_x;
-	int map_grid_index_y;
-
-	if (x < 0 || x > (g_tile_size * g_map_col)
-	|| y < 0 || y > (g_tile_size * g_map_row))
-		return (1);
-	map_grid_index_x = floor(x / g_tile_size);
-	map_grid_index_y = floor(y / g_tile_size);
-	if (map_grid_index_x >= g_map_col || map_grid_index_y >= g_map_row || g_grid_array[map_grid_index_y][map_grid_index_x] == 1)
-		return (1);
-	else
-		return (0);
-}
-
-static void		update_position(t_player *player, float y,
-		float x, t_sprite *sprite)
-{
-	float		olddirx;
-	float		oldplanx;
-	float		vectangle;
-
-	olddirx = sprite->dirx;
-	oldplanx = sprite->planx;
-	vectangle = player->turn_direction * player->turn_speed;
-	sprite->dirx = sprite->dirx * cos(vectangle) - sprite->diry *
-		sin(vectangle);
-	sprite->diry = olddirx * sin(vectangle) + sprite->diry * cos(vectangle);
-	sprite->planx = sprite->planx * cos(vectangle) - sprite->plany *
-		sin(vectangle);
-	sprite->plany = oldplanx * sin(vectangle) + sprite->plany * cos(vectangle);
-	if (has_wall_at(y, x) != 1 )
-	{
-		player->y = y;
-		player->x = x;
-	}
+void			update_position(float x, float y)
+{	
+	update_sprite();
+	update_player_position(x, y);
 }
 
 void			move_player(void) //co van de o day
@@ -92,5 +46,5 @@ void			move_player(void) //co van de o day
 			new_player_y = g_player.y - sin(angle) * -move_step;
 		}
 	}
-	update_position(&g_player, new_player_y, new_player_x, &g_sprite);
+	update_position(new_player_x, new_player_y);
 }
