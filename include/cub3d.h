@@ -102,7 +102,7 @@ int			has_wall_at(float x, float y);
 void		cast_rays(void);
 void		cast_one_ray(float ray_angle, int strip_id);
 void		render_ray(int column_id);
-void		draw_wall(t_wall *wall, int column_id);
+void		draw_wall_strip_with_texture(t_wall *wall, int column_id);
 int			choice_of_texture(void);
 void		find_smallest_distance(void);
 void		the_smallest_of_the_distances_utile(float vert_hit_distance,
@@ -117,23 +117,23 @@ void 		get_first_horz_intercept(t_ray *ray, t_player *player);
 void		find_horz_intercept(t_ray *ray, t_player *player);
 void		find_where_ray_face();
 float		normalize_angle(float angle);
-void		bmp_exporter(char *file_name);
+void		get_bmp(char *file_name);
 void		write_file(int fd, int imagesize);
 void		write_header(int fd, t_bmp_file info_bmp_file);
 void		create_header(t_bmp_file *info_bmp_file);
 int			create_file(char *file_name);
 void		put_sprite(void);
 void		ft_getstart(t_sprite *sprite, float sprite_size, float transformy);
-void		ft_drawsprite(t_sprite *sprite, float transformy,
+void		render_sprite(t_sprite *sprite, float transformy,
 			float sprite_size);
 void		ft_puttexture(t_sprite *sprite, int x, int y, float sprite_size);
-int			ft_spritevisible(int id, float sprite_size);
-float		ft_calculangle(t_player *player, float x, float y);
-void		ft_spritedistance(void);
-void		ft_sortsprite();
-void		ft_switch(t_sprite *sprite, int i, int j);
-void		ft_zero(void);
-float		ft_gettransformy(t_sprite *sprite, t_player *player, int id);
+int			is_sprite_visible(int id);
+float		calculate_relative_sprite_angle(t_player *player, float x, float y);
+void		get_sprite_distance_to_player(void);
+void		sort_sprite_distance(void);
+void		switch_sprite(t_sprite *sprite, int i, int j);
+void		put_elements_in_sprite_to_zero(void);
+float		get_transformed_y(t_sprite *sprite, t_player *player, int id);
 void		init_vecteur_north(t_sprite *sprite);
 void		get_position_sprite(t_sprite *sprite, int **map);
 void		init_vecteur(t_sprite *sprite, char player_position);
@@ -143,5 +143,7 @@ void		update_position(float x, float y);
 int			player_orientation_angle(float angle);
 void		update_sprite(void);
 void		update_player_position(float x, float y);
+float		make_sense_angle(float angle);
+
 
 #endif

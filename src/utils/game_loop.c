@@ -83,7 +83,7 @@ int		create_one_frame(t_info *info)
 	draw_mini_map();
 	put_sprite();
 	if (info->screenshoot == 1)
-		bmp_exporter("my_screenshoot.bmp");
+		get_bmp("my_screenshoot.bmp");
 	else
 	{
 		mlx_put_image_to_window(g_mlx, g_window.mlx_ptr, g_image.mlx_ptr, 0, 0);

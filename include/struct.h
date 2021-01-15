@@ -83,8 +83,8 @@ typedef struct		s_sprite
 	int				drawendx;
 	float			diry;
 	float			dirx;
-	float			plany;
-	float			planx;
+	float			planey;
+	float			planex;
 	float			angle;
 	int				spritescreenx;
 }					t_sprite;

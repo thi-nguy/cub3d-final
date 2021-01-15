@@ -19,7 +19,7 @@ int			create_file(char *file_name)
 	if (!((fd = open(file_name, O_WRONLY | O_CREAT |
 	O_TRUNC, S_IRUSR | S_IWUSR)) > 0))
 	{
-		ft_putstr_fd("Error\nin while creating file bmp\n", 1);
+		ft_putstr_fd("Error\nCannot creat bmp file\n", 1);
 		exit(ERROR);
 	}
 	return (fd);
@@ -89,9 +89,10 @@ void		write_file(int fd, int imagesize)
 	}
 	j = write(fd, pixel_array, imagesize *= 4);
 	free(pixel_array);
+	pixel_array = NULL;
 }
 
-void		bmp_exporter(char *file_name)
+void		get_bmp(char *file_name)
 {
 	t_bmp_file	info_bmp_file;
 	int			fd;

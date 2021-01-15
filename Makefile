@@ -55,7 +55,7 @@ SRC = 	./src/main.c\
 		./src/cast_ray/find_smallest_distance.c\
 		./src/put_sprite/put_sprite_utils.c\
 		./src/put_sprite/put_sprite.c\
-		./src/put_sprite/draw_sprite.c\
+		./src/put_sprite/render_sprite.c\
 
 
 OBJ = $(SRC:.c=.o)

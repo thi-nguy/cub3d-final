@@ -12,25 +12,27 @@
 
 #include "cub3d.h"
 
-int		ft_spritevisible(int id, float sprite_size)
+int		is_sprite_visible(int id)
 {
-	float	spriteangle;
-	float	spriteangle_end;
-	float	wallspriteangle;
-	float	fovsprite;
+	float		spritex;
+	float		spritey;
+	float		invdet;
+	float		transformx;
+	float		transformy;
 
-	spriteangle = fabs(ft_calculangle(&g_player, g_sprite.x[id],
-				g_sprite.y[id]));
-	spriteangle_end = fabs(ft_calculangle(&g_player, (g_sprite.x[id]
-					+ sprite_size), (g_sprite.y[id] + sprite_size)));
-	wallspriteangle = fabs(spriteangle_end - spriteangle);
-	fovsprite = g_fov / 2 + wallspriteangle;
-	if (spriteangle < fovsprite)
+	spritex = g_sprite.x[id] - g_player.x;
+	spritey = g_sprite.y[id] - g_player.y;
+	invdet = 1.0 / (g_sprite.planex * g_sprite.diry -
+			g_sprite.dirx * g_sprite.planey);
+	transformx = invdet * (g_sprite.diry * spritex - g_sprite.dirx * spritey);
+	transformy = invdet * (-g_sprite.planey * spritex + g_sprite.planex * spritey);
+	if (transformx / transformy > 1)
+		return (0);
+	else
 		return (1);
-	return (0);
 }
 
-void	ft_zero(void)
+void	put_elements_in_sprite_to_zero(void)
 {
 	g_sprite.drawstartx = 0;
 	g_sprite.drawendx = 0;
@@ -39,25 +41,26 @@ void	ft_zero(void)
 	g_sprite.spritescreenx = 0;
 }
 
-void	ft_sortsprite(void)
+void	sort_sprite_distance(void)
 {
 	int	j;
 	int	i;
 
-	i = -1;
-	while (i++ < g_sprite.nb_sprite)
+	i = 0;
+	while (i < g_sprite.nb_sprite)
 	{
 		j = i + 1;
 		while (j < g_sprite.nb_sprite)
 		{
 			if (g_sprite.distance[j] > g_sprite.distance[i])
-				ft_switch(&g_sprite, i, j);
+				switch_sprite(&g_sprite, i, j);
 			j++;
 		}
+		i++;
 	}
 }
 
-void	ft_spritedistance(void)
+void	get_sprite_distance_to_player(void)
 {
 	int	id;
 
@@ -72,26 +75,28 @@ void	ft_spritedistance(void)
 
 void	put_sprite(void)
 {
-	float		distanceprojection;
+	float		distance_player_to_projection_plane;
 	float		sprite_size;
 	int			id;
-	float		transformy;
+	float		transformed_y;
 
 	id = 0;
-	ft_spritedistance();
-	ft_sortsprite();
+	get_sprite_distance_to_player();
+	sort_sprite_distance();
 	while (id < g_sprite.nb_sprite)
 	{
-		distanceprojection = (g_window.width / 2) / tan(g_fov / 2);
+		distance_player_to_projection_plane = (g_window.width / 2) / tan(g_fov / 2);
 		sprite_size = g_tile_size * 0.5 / g_sprite.distance[id] *
-			distanceprojection;
-		ft_zero();
-		if (ft_spritevisible(id, sprite_size) == 1)
+			distance_player_to_projection_plane;
+		put_elements_in_sprite_to_zero();
+		if (is_sprite_visible(id) == 1)
 		{
-			transformy = ft_gettransformy(&g_sprite, &g_player, id);
-			ft_getstart(&g_sprite, sprite_size, transformy);
-			ft_drawsprite(&g_sprite, transformy, sprite_size);
+			transformed_y = get_transformed_y(&g_sprite, &g_player, id);
+			ft_getstart(&g_sprite, sprite_size, transformed_y);
+			render_sprite(&g_sprite, transformed_y, sprite_size);
 		}
 		id++;
 	}
 }
+
+

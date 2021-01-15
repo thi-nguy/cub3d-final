@@ -42,8 +42,8 @@ void	init_vecteur_north(t_sprite *sprite)
 {
 	sprite->dirx = 0;
 	sprite->diry = -1;
-	sprite->planx = -0.6;
-	sprite->plany = 0;
+	sprite->planex = -0.6;
+	sprite->planey = 0;
 }
 
 void	init_vecteur(t_sprite *sprite, char player_position)
@@ -52,22 +52,22 @@ void	init_vecteur(t_sprite *sprite, char player_position)
 	{
 		sprite->dirx = 1;
 		sprite->diry = 0;
-		sprite->planx = 0;
-		sprite->plany = -0.6;
+		sprite->planex = 0;
+		sprite->planey = -0.6;
 	}
 	else if (player_position == 'S')
 	{
 		sprite->dirx = 0;
 		sprite->diry = 1;
-		sprite->planx = 0.6;
-		sprite->plany = 0;
+		sprite->planex = 0.6;
+		sprite->planey = 0;
 	}
 	else if (player_position == 'W')
 	{
 		sprite->dirx = -1;
 		sprite->diry = 0;
-		sprite->planx = 0;
-		sprite->plany = 0.6;
+		sprite->planex = 0;
+		sprite->planey = 0.6;
 	}
 	else if (player_position == 'N')
 		init_vecteur_north(sprite);

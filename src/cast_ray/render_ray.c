@@ -25,7 +25,7 @@ int		choice_of_texture(void)
 	(void)g_ray;
 }
 
-void	draw_wall(t_wall *wall, int column_id)
+void	draw_wall_strip_with_texture(t_wall *wall, int column_id)
 {
 	int	texture_offset_x;
 	int	texture_offset_y;
@@ -35,11 +35,9 @@ void	draw_wall(t_wall *wall, int column_id)
 
 	index = choice_of_texture();
 	if (g_ray.was_hit_vertical == 1)
-		texture_offset_x = (int)(g_ray.wall_hit_y * g_texture[index].width /
-				g_tile_size) % g_texture[index].width;
+		texture_offset_x = (int)(g_ray.wall_hit_y) % g_tile_size;
 	else
-		texture_offset_x = (int)(g_ray.wall_hit_x * g_texture[index].width /
-				g_tile_size) % g_texture[index].width;
+		texture_offset_x = (int)(g_ray.wall_hit_x) % g_tile_size;
 	while (wall->wall_top < wall->wall_bottom)
 	{
 		distance_from_top = wall->wall_top + (wall->wall_strip_height / 2) -
@@ -70,5 +68,5 @@ void	render_ray(int column_id)
 	wall.wall_bottom = (g_window.height / 2) + (wall.wall_strip_height / 2);
 	if (wall.wall_bottom > g_window.height)
 		wall.wall_bottom = g_window.height;
-	draw_wall(&wall, column_id);
+	draw_wall_strip_with_texture(&wall, column_id);
 }

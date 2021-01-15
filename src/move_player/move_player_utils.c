@@ -34,14 +34,14 @@ void			update_sprite(void)
 	float		vectangle;
 
 	olddirx = g_sprite.dirx;
-	oldplanx = g_sprite.planx;
+	oldplanx = g_sprite.planex;
 	vectangle = g_player.turn_direction * g_player.turn_speed;
 	g_sprite.dirx = g_sprite.dirx * cos(vectangle) - g_sprite.diry *
 		sin(vectangle);
 	g_sprite.diry = olddirx * sin(vectangle) + g_sprite.diry * cos(vectangle);
-	g_sprite.planx = g_sprite.planx * cos(vectangle) - g_sprite.plany *
+	g_sprite.planex = g_sprite.planex * cos(vectangle) - g_sprite.planey *
 		sin(vectangle);
-	g_sprite.plany = oldplanx * sin(vectangle) + g_sprite.plany * cos(vectangle);
+	g_sprite.planey = oldplanx * sin(vectangle) + g_sprite.planey * cos(vectangle);
 }
 
 void			update_player_position(float x, float y)

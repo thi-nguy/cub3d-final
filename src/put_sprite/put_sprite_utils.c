@@ -12,40 +12,46 @@
 
 #include "cub3d.h"
 
-void	ft_switch(t_sprite *sprite, int i, int j)
+void	switch_sprite(t_sprite *sprite, int i, int j)
 {
-	float		temp_dist;
+	float		temp_distance;
 	float		temp_y;
 	float		temp_x;
 
-	temp_dist = sprite->distance[j];
+	temp_distance = sprite->distance[j];
 	temp_x = sprite->x[j];
 	temp_y = sprite->y[j];
 	sprite->distance[j] = sprite->distance[i];
 	sprite->x[j] = sprite->x[i];
 	sprite->y[j] = sprite->y[i];
-	sprite->distance[i] = temp_dist;
+	sprite->distance[i] = temp_distance;
 	sprite->x[i] = temp_x;
 	sprite->y[i] = temp_y;
 }
 
-float	ft_calculangle(t_player *player, float x, float y)
+float	make_sense_angle(float angle)
+{
+	if (angle < -3.14159)
+		angle += 2.0 * 3.14159;
+	if (angle > 3.14159)
+		angle -= 2.0 * 3.14159;
+	return (angle);
+}
+
+float	calculate_relative_sprite_angle(t_player *player, float x, float y)
 {
 	float	vectx;
 	float	vecty;
-	float	playertospriteangle;
-	float	spriteangle;
-	float	playerangle;
+	float	relative_sprite_angle;
+	float	found_angle;
+	float	player_rotation_angle;
 
 	vectx = x - player->x;
 	vecty = y - player->y;
-	playertospriteangle = atan2(vecty, vectx);
-	playerangle = normalize_angle(player->rotation_angle);
-	spriteangle = playerangle - playertospriteangle;
-	if (spriteangle < -3.14159)
-		spriteangle += 2.0 * 3.14159;
-	if (spriteangle > 3.14159)
-		spriteangle -= 2.0 * 3.14159;
-	spriteangle = fabs(spriteangle);
-	return (spriteangle);
+	relative_sprite_angle = atan2(vecty, vectx);
+	player_rotation_angle = normalize_angle(player->rotation_angle);
+	found_angle = player_rotation_angle - relative_sprite_angle;
+	found_angle = make_sense_angle(found_angle);
+	found_angle = fabs(found_angle);
+	return (found_angle);
 }
