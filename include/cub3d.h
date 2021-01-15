@@ -127,13 +127,12 @@ void		ft_getstart(t_sprite *sprite, float sprite_size, float transformy);
 void		render_sprite(t_sprite *sprite, float transformy,
 			float sprite_size);
 void		ft_puttexture(t_sprite *sprite, int x, int y, float sprite_size);
-int			is_sprite_visible(int id);
+int			is_sprite_visible(int id, float sprite_size);
 float		calculate_relative_sprite_angle(t_player *player, float x, float y);
 void		get_sprite_distance_to_player(void);
 void		sort_sprite_distance(void);
 void		switch_sprite(t_sprite *sprite, int i, int j);
 void		put_elements_in_sprite_to_zero(void);
-float		get_transformed_y(t_sprite *sprite, t_player *player, int id);
 void		init_vecteur_north(t_sprite *sprite);
 void		get_position_sprite(t_sprite *sprite, int **map);
 void		init_vecteur(t_sprite *sprite, char player_position);
@@ -144,6 +143,10 @@ int			player_orientation_angle(float angle);
 void		update_sprite(void);
 void		update_player_position(float x, float y);
 float		make_sense_angle(float angle);
+float		get_transform_x(int id);
+float		get_transform_y(int id);
+float		calculate_relative_sprite_angle(t_player *player, float x, float y);
+
 
 
 #endif

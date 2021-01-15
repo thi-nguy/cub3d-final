@@ -87,6 +87,7 @@ typedef struct		s_sprite
 	float			planex;
 	float			angle;
 	int				spritescreenx;
+	float			inv_det;
 }					t_sprite;
 
 typedef struct		s_image

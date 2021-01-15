@@ -12,25 +12,6 @@
 
 #include "cub3d.h"
 
-float	get_transformed_y(t_sprite *sprite, t_player *player, int id)
-{
-	float		spritex;
-	float		spritey;
-	float		invdet;
-	float		transformx;
-	float		transformy;
-
-	spritex = sprite->x[id] - player->x;
-	spritey = sprite->y[id] - player->y;
-	invdet = 1.0 / (sprite->planex * sprite->diry -
-			sprite->dirx * sprite->planey);
-	transformx = invdet * (sprite->diry * spritex - sprite->dirx * spritey);
-	transformy = invdet * (-sprite->planey * spritex + sprite->planex * spritey);
-	sprite->spritescreenx = (int)((g_window.width / 2) *
-			(1 - transformx / transformy));
-	return (transformy);
-}
-
 void	ft_getstart(t_sprite *sprite, float sprite_size, float transformy)
 {
 	int	spriteheight;
