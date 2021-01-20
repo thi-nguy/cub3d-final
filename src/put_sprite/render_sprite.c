@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:10:21 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/01/18 12:10:23 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/01/20 21:38:25 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	ft_puttexture(t_sprite *sprite, int x, int y, float sprite_size)
 		return ;
 	color = sprite->data_addr[(textureoffsety * sprite->width)
 		+ textureoffsetx];
-	if (color != 0x000000)
+	if (color > 0)
 		g_image.data_addr[y * g_window.width + x] = color;
 }
